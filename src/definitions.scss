@@ -1,0 +1,16 @@
+$colour-blue: #336993;
+$colour-red:  #E0444C;
+$colour-yellow: #E4CB45;
+$colour-active-area: lighten(desaturate($colour-yellow, 30), 45); 
+
+
+@mixin fancyBorder() {
+  border: 2px solid desaturate($colour-yellow, 30);
+  border-radius: 2*2px;
+}
+
+@mixin activeArea () {
+  background-color: $colour-active-area;
+  @include fancyBorder();
+}
+

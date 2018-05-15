@@ -4,20 +4,20 @@
       <LocationList />
       <LocationList />
     </nav>
-    <section>
-
-    </section>
+    <LanguageBlobs />
   </section>
 </template>
 
 <script>
 import LocationList from './components/LocationList'
+import LanguageBlobs from './components/LanguageBlobs'
 
 export default {
   name: 'App',
 
   components: {
     LocationList,
+    LanguageBlobs,
   },
 }
 </script>

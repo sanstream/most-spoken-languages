@@ -2,7 +2,7 @@
   <section data-component="language-blobs">
     <h1>Of the 90 miljon inhabitants of Japan:</h1>
     <ul>
-      <li v-for="(i,ii) in [ 1, 2, 3, 4, 5,6,7,8,9]"
+      <li v-for="(language,ii) in displayedLanguages"
         :key="ii" 
         class="language-blobs--blob">
         <svg viewBox="0 0 50 50">
@@ -20,7 +20,7 @@
         <p>
         <em>5 mil.</em><br>
         <span>speak</span><br>
-        <em>English</em>
+        <em>{{language}}</em>
         </p>
       </li>
     </ul>
@@ -30,6 +30,12 @@
 <script>
 export default {
   name: 'LanguageBlobs',
+  props: {
+    displayedLanguages: {
+      type: Array,
+      required: true,
+    },
+  },
 }
 </script>
 

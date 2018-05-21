@@ -2,15 +2,15 @@
   <section data-component="most-spoken-languages-app">
     <nav>
       <LocationList />
-      <LocationList />
     </nav>
-    <LanguageBlobs />
+    <LanguageBlobs :displayedLanguages="displayedLanguages" />
   </section>
 </template>
 
 <script>
 import LocationList from './components/LocationList'
 import LanguageBlobs from './components/LanguageBlobs'
+import {mapState, } from 'vuex'
 
 export default {
   name: 'App',
@@ -19,6 +19,10 @@ export default {
     LocationList,
     LanguageBlobs,
   },
+
+  computed: mapState({
+    displayedLanguages: state => state.displayedLanguages,
+  }),
 }
 </script>
 

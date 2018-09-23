@@ -14,7 +14,6 @@ const state = {
     'Bengali',
     'Russian',
     'Japanese',
-    'Punjabi',
   ],
   selected: null,
 }

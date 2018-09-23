@@ -27,33 +27,23 @@ export default {
 </script>
 
 <style lang="scss">
+@import './definitions';
 
 [data-component="most-spoken-languages-app"] {
-  font-family: 'Consolas', Courier, monospace;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 3em;
+  color: $text-colour;
   font-size: 100%;
   line-height: 1.4em;
+  background-color: $background-colour;
+  padding: 3em;
   line-height: inherit;
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-
-  nav {
-    flex: 1 1 auto;
-    display: flex;
-    flex-wrap: nowrap;
-    max-height: 50vh;
-
-    & > * {
-      margin-right: 2em; 
-    }
-  }
-
-  > section {
-    flex: 1 0 auto;
-  }
+  min-height: 100vh;
+  min-width: 100vw;
+  position: absolute;
+  top:0;
+  left: 0;
 
   [data-component="location-list"] {
     flex: 0 1 auto;

@@ -1,6 +1,6 @@
 <template>
   <section data-component="language-blobs">
-    <h1>Of the 90 miljon inhabitants of Japan:</h1>
+    <h1>Of the 90 million inhabitants of Japan:</h1>
     <ul>
       <li v-for="(language,ii) in displayedLanguages"
         :key="ii" 
@@ -68,11 +68,11 @@ export default {
       height: 5em;
 
       .total-inhabitants {
-        fill: lighten($colour-blue, 25);
+        fill: $interactive-element-background;
       }
 
       .total-inhabitants-speaking-language {
-        fill: $colour-red;
+        fill: $interactive-element-active-part;
       }
     }
   }

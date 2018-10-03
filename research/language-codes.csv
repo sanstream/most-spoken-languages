@@ -27,7 +27,7 @@ Indo-European,"Catalan, Valencian","català, valencià",ca,cat,cat,cat,
 Austronesian,Chamorro,Chamoru,ch,cha,cha,cha,
 Northeast Caucasian,Chechen,нохчийн мотт,ce,che,che,che,
 Niger–Congo,"Chichewa, Chewa, Nyanja","chiCheŵa, chinyanja",ny,nya,nya,nya,
-Sino-Tibetan,Chinese,"中文 (Zhōngwén), 汉语, 漢語",zh,zho,chi,zho + 13,macrolanguage
+Sino-Tibetan,Mandarin,"中文",zh,zho,chi,zho + 13,macrolanguage
 Turkic,Chuvash,чӑваш чӗлхи,cv,chv,chv,chv,
 Indo-European,Cornish,Kernewek,kw,cor,cor,cor,
 Indo-European,Corsican,"corsu, lingua corsa",co,cos,cos,cos,
@@ -45,7 +45,7 @@ Niger–Congo,Ewe,Eʋegbe,ee,ewe,ewe,ewe,
 Indo-European,Faroese,føroyskt,fo,fao,fao,fao,
 Austronesian,Fijian,vosa Vakaviti,fj,fij,fij,fij,
 Uralic,Finnish,"suomi, suomen kieli",fi,fin,fin,fin,
-Indo-European,French,"français, langue française",fr,fra,fre,fra,
+Indo-European,French,"français",fr,fra,fre,fra,
 Niger–Congo,Fulah,"Fulfulde, Pulaar, Pular",ff,ful,ful,ful + 9,"macrolanguage, also known as Fula"
 Indo-European,Galician,Galego,gl,glg,glg,glg,
 South Caucasian,Georgian,ქართული,ka,kat,geo,kat,
@@ -57,7 +57,7 @@ Creole,"Haitian, Haitian Creole",Kreyòl ayisyen,ht,hat,hat,hat,
 Afro-Asiatic,Hausa,(Hausa) هَوُسَ,ha,hau,hau,hau,
 Afro-Asiatic,Hebrew (modern),עברית,he,heb,heb,heb,"Changed in 1989 from original ISO 639:1988, iw[1]"
 Niger–Congo,Herero,Otjiherero,hz,her,her,her,
-Indo-European,Hindi,"हिन्दी, हिंदी",hi,hin,hin,hin,
+Indo-European,Hindi,"हिन्दी",hi,hin,hin,hin,
 Austronesian,Hiri Motu,Hiri Motu,ho,hmo,hmo,hmo,
 Uralic,Hungarian,magyar,hu,hun,hun,hun,
 Constructed,Interlingua,Interlingua,ia,ina,ina,ina,constructed by International Auxiliary Language Association
@@ -70,8 +70,8 @@ Constructed,Ido,Ido,io,ido,ido,ido,"constructed by De Beaufront, 1907, as variat
 Indo-European,Icelandic,Íslenska,is,isl,ice,isl,
 Indo-European,Italian,Italiano,it,ita,ita,ita,
 Eskimo–Aleut,Inuktitut,ᐃᓄᒃᑎᑐᑦ,iu,iku,iku,iku + 2,macrolanguage
-Japonic,Japanese,日本語 (にほんご),ja,jpn,jpn,jpn,
-Austronesian,Javanese,"ꦧꦱꦗꦮ, Basa Jawa",jv,jav,jav,jav,
+Japonic,Japanese,日本語,ja,jpn,jpn,jpn,
+Austronesian,Javanese,"Basa Jawa",jv,jav,jav,jav,
 Eskimo–Aleut,"Kalaallisut, Greenlandic","kalaallisut, kalaallit oqaasii",kl,kal,kal,kal,
 Dravidian,Kannada,ಕನ್ನಡ,kn,kan,kan,kan,
 Nilo-Saharan,Kanuri,Kanuri,kr,kau,kau,kau + 3,macrolanguage
@@ -121,7 +121,7 @@ Indo-European,"Church Slavic, Church Slavonic, Old Church Slavonic, Old Sl
 Afro-Asiatic,Oromo,Afaan Oromoo,om,orm,orm,orm + 4,macrolanguage
 Indo-European,Oriya,ଓଡ଼ିଆ,or,ori,ori,ori,also known as Odia
 Indo-European,"Ossetian, Ossetic",ирон æвзаг,os,oss,oss,oss,
-Indo-European,"Panjabi, Punjabi",ਪੰਜਾਬੀ,pa,pan,pan,pan,
+Indo-European,"Punjabi",ਪੰਜਾਬੀ,pa,pan,pan,pan,
 Indo-European,Pali,पाऴि,pi,pli,pli,pli,"ancient, also known as Pāli"
 Indo-European,Persian,فارسی,fa,fas,per,fas + 2,"macrolanguage, also known as Farsi"
 Indo-European,Polish,"język polski, polszczyzna",pl,pol,pol,pol,
@@ -146,7 +146,7 @@ Indo-European,Slovak,"Slovenčina, Slovenský Jazyk",sk,slk,slo,slk,
 Indo-European,Slovene,"Slovenski Jezik, Slovenščina",sl,slv,slv,slv,also known as Slovenian
 Afro-Asiatic,Somali,"Soomaaliga, af Soomaali",so,som,som,som,
 Niger–Congo,Southern Sotho,Sesotho,st,sot,sot,sot,
-Indo-European,"Spanish, Castilian",Español,es,spa,spa,spa,
+Indo-European,Spanish,Español,es,spa,spa,spa,
 Austronesian,Sundanese,Basa Sunda,su,sun,sun,sun,
 Niger–Congo,Swahili,Kiswahili,sw,swa,swa,swa + 2,macrolanguage
 Niger–Congo,Swati,SiSwati,ss,ssw,ssw,ssw,also known as Swazi

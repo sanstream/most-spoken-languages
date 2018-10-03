@@ -30,15 +30,15 @@ langCodesCSV.split('\n').forEach(el => {
 const populations = fs.readFileSync('world-populations.csv', 'utf8').split('\n')
 populations.forEach(function (element) {
   let pairing = element.split(',')
+  const country = pairing[0].trim().toLowerCase()
+  let count = null
   if (pairing.length === 2) {
-    const country = pairing[0].trim().toLowerCase()
-    const count = parseInt(pairing[1].replace(/[\s]+/g, '').match(/[\d]+$/), 10) * 1000
-    if (countryLookup[country]) {
-      output[countryLookup[country].code]['populationCount'] = count
-    }
+    count = parseInt(pairing[1].replace(/[\s]+/g, '').match(/[\d]+$/), 10) * 1000
+  }
+  if (countryLookup[country]) {
+    output[countryLookup[country].code]['populationCount'] = count
   }
 })
-
 
 const ciaLangCensus = fs.readFileSync('cia-language-census.txt', 'utf8').split('\n')
 const ciaLangCensusLookup = {}
@@ -59,13 +59,13 @@ ciaLangCensus.forEach(function (line) {
     countryCode = countryLookup[countryName] ? countryLookup[countryName].code : null
   } else if (countryCode) {
     // remove leading whitespace for the languages:
-    const languageSet = line.replace(/^[\s]+/g, '').replace(/[\s]+$/g, '')
+    const languageSet = line.trim().replace(/[\s]+/g, ':').split(':')
     // split of the percentage value into a separate object per language:
-    const language = languageSet.replace(/^[\s]+/g, '').replace(/\s[.\d]+$/, '')
+    const language = languageSet[0]
     const langCode = langLookUp[language.toLowerCase()]
-    const percentage = languageSet.match(/[.\d]+$/)
-    if (langCode && percentage && percentage.length) {
-      output[countryCode].languages[langCode] = parseFloat(percentage[0])
+    if (langCode) {
+      const percentage = (languageSet[1]) ? parseFloat(languageSet[1]) : null
+      output[countryCode].languages[langCode] = percentage
     }
   }
 })

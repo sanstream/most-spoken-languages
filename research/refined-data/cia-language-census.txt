@@ -26,13 +26,12 @@ American Samoa:
   Samoan 88.6
   English 3.9
   Tongan 2.7
-  other Pacific islander 3
   other 1.8
 Andorra:
   Catalan 100
-  French
-  Castilian
-  Portuguese
+  French 1
+  Castilian 1
+  Portuguese 1
 Angola:
   Portuguese 71.2
   Umbundu 23
@@ -53,20 +52,20 @@ Antigua and Barbuda:
   Antiguan creole
 Argentina:
   Spanish 100
-  Italian
-  English
-  German
-  French
-  indigenous
+  Italian 1
+  English 1
+  German 1
+  French 1
+  indigenous 1
 Armenia:
   Armenian 97.9
   urdish 1
 Aruba:
   Papiamento 69.4
   Spanish 13.7
-  English  7.1
+  English 7.1
   Dutch 6.1
-  Chinese 1.5
+  Mandarin 1.5
   other 1.7
   unspecified 0.4
 Australia:
@@ -160,11 +159,11 @@ Botswana:
 Brazil:
   Portuguese
 British Virgin Islands:
-  nglish
+  English
 Brunei:
   Malay
   English
-  Chinese dialects
+  Mandarin dialects
 Bulgaria:
   Bulgarian 76.8
  Turkish 8.2
@@ -217,14 +216,13 @@ Chad:
   French
   Arabic
   Sara
-  ore than 120 different languages and dialects
 Chile:
   Spanish 99.5
   English 10.2
  indigenous 1
  nspecified 0.2
 China:
-  Standard Chinese or Mandarin
+  Mandarin
   Yue
   Wu
   Minbei
@@ -469,7 +467,7 @@ Guyana:
   Guyanese Creole
   Amerindian languages
   Indian languages
-  hinese
+  Madarin
 Haiti:
   French
   Creole
@@ -485,7 +483,7 @@ Hong Kong:
   Cantonese 88.9
  English 4.3
  Mandarin 1.9
- other Chinese dialects 3.1
+ other Mandarin dialects 3.1
  other 1.9
 Hungary:
   Hungarian 99.6
@@ -544,7 +542,7 @@ Isle of Man:
 Israel:
   Hebrew
   Arabic
-  nglish
+  English
 Italy:
   Italian
   German
@@ -552,9 +550,9 @@ Italy:
   Slovene
 Jamaica:
   English
-  nglish patois
+  English patois
 Japan:
-  apanese
+  Japanese 100
 Jersey:
   English 94.5
   Portuguese 4.6
@@ -638,7 +636,7 @@ Luxembourg:
 Macau:
   Cantonese 80.1
  Mandarin 5.5
- other Chinese dialects 5.3
+ other Mandarin dialects 5.3
  Tagalog 3
  English 2.8
  Portuguese 0.6
@@ -670,7 +668,7 @@ Malawi:
 Malaysia:
   Bahasa Malaysia
   English
-  Chinese
+  Mandarin
   Tamil
   Telugu
   Malayalam
@@ -678,7 +676,7 @@ Malaysia:
   Thai
 Maldives:
   Dhivehi
-  nglish
+  English
 Mali:
   French
   Bambara 46.3
@@ -801,7 +799,7 @@ New Zealand:
  Samoan 2
  Hindi 1.6
  French 1.2
- Northern Chinese 1.2
+ Mandarin 1.2
  Yue 1
  other or not stated 20.5
  New Zealand Sign Language
@@ -834,7 +832,7 @@ Northern Mariana Islands:
  Chamorro 24.1
  English 17
  other Pacific island languages 10.1
- Chinese 6.8
+ Mandarin 6.8
  other Asian languages 7.3
  ther 1.9
 Norway:
@@ -864,7 +862,7 @@ Palau:
  other Micronesian 1.9
  English 19.1
  Filipino 9.9
- Chinese 1.2
+ Mandarin 1.2
  ther 2.8
 Panama:
   Spanish
@@ -877,7 +875,7 @@ Panama:
   and Bri Bri
   Panamanian English Creole
   English
-  Chinese
+  Mandarin
   Arabic
   French Creole
   other
@@ -920,7 +918,7 @@ Portugal:
   Mirandese
 Puerto Rico:
   Spanish
-  nglish
+  English
 Qatar:
   Arabic
   English commonly used as a second language
@@ -930,7 +928,7 @@ Romania:
  Romani 1.2
  other 1
  nspecified 6.1
-Russia:
+Russian Federation:
   Russian 85.7
   Tatar 3.2
  Chechen 1
@@ -1018,7 +1016,7 @@ Singapore:
  Tamil 3.2
  Teochew 3.2
  other Indian languages 1.2
- other Chinese dialects 1.1
+ other Mandarin dialects 1.1
  other 1.1
 Sint Maarten:
   English 67.5
@@ -1072,10 +1070,10 @@ South Sudan:
   Zande
   hilluk
 Spain:
-  Castilian Spanish  74
- Catalan  17
- Galician  7
- Basque  2
+ Spanish 74
+ Catalan 17
+ Galician 7
+ Basque 2
  Aranese  along with Catalan
  <5
  000 speakers
@@ -1104,7 +1102,7 @@ Swaziland:
 Sweden:
   Swedish
 Switzerland:
-  German  63
+  German 63
  French 22.7
  Italian 8.1
  English 4.9
@@ -1121,9 +1119,9 @@ Syria:
   Aramaic
   Circassian
   French
-  nglish
+  English
 Taiwan:
-  Mandarin Chinese
+  Mandarin
   Taiwanese
   Hakka dialects
 Tajikistan:
@@ -1168,7 +1166,7 @@ Tokelau:
  none 2.8
  nspecified 0.8
 Tonga:
-  English and Tongan 87
+  English 87
  Tongan 10.7
  English 1.2
  other 1.1
@@ -1180,7 +1178,7 @@ Trinidad and Tobago:
   Caribbean Hindustani
   Trinidadian Creole French
   Spanish
-  Chinese
+  Mandarin
 Tunisia:
   Arabic
   French
@@ -1195,7 +1193,7 @@ Turkmenistan:
  Uzbek 9
  other 7
 Turks and Caicos Islands:
-  nglish
+  English
 Tuvalu:
   Tuvaluan
   English
@@ -1219,7 +1217,7 @@ United Arab Emirates:
   Hindi
   Urdu
 United Kingdom:
-  English
+  English 99
 United States:
   English 79
  Spanish 13
@@ -1247,14 +1245,14 @@ Venezuela:
 Vietnam:
   Vietnamese
   English
-  some French
-  Chinese
-  and Khmer
+  French
+  Mandarin
+  Khmer
   mountain area languages
 Virgin Islands:
   English 71.6
- Spanish or Spanish Creole 17.2
- French or French Creole 8.6
+ Spanish 17.2
+ French 8.6
  other 2.5
 Wallis and Futuna:
   Wallisian  58.9
@@ -1270,7 +1268,7 @@ Western Sahara:
   Hassaniya Arabic
   Moroccan Arabic
 World: 
- Mandarin Chinese 12.2
+ Mandarin 12.2
  Spanish 5.8
  English 4.6
  Arabic 3.6

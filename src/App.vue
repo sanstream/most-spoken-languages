@@ -1,10 +1,8 @@
 <template>
-  <section data-component="most-spoken-languages-app">
-    <nav>
-      <LocationList />
-    </nav>
-    <LanguageBlobs :displayedLanguages="displayedLanguages" />
-  </section>
+  <article data-component="most-spoken-languages-app">
+    <h1>The 10 most spoken languages</h1>
+    <router-view></router-view>
+  </article>
 </template>
 
 <script>

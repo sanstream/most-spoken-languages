@@ -46,5 +46,9 @@ export default {
   [data-component="location-list"] {
     flex: 0 1 auto;
   }
+
+  h1 {
+    color: $colour-blue;
+  }
 }
 </style>

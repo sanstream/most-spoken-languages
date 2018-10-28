@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section data-component="intro">
     <p>
       When we are raised by our family we naturally learn the language they speak. 
       This helps us to communicate. Share ideas and learn from them.
@@ -50,6 +50,16 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss">
+@import '../../definitions';
 
+[data-component="intro"] {
+  $maxWidth: 1024px;
+  max-width: $maxWidth;
+  padding: 0 calc((100vw - #{$maxWidth}) / 2)
+}
+
+h1 {
+  font-size: 4em;
+}
 </style>

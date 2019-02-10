@@ -7,6 +7,16 @@
 <script>
   export default {
     name: 'Overview',
+
+    created () {
+      this.$store.dispatch('setSelectedCountry')
+    },
+
+    watch: {
+      '$route' () {
+        this.$store.dispatch('setSelectedCountry')
+      },
+    },
   }
 </script>
 

@@ -56,7 +56,7 @@ $heading-colour: #777777;
 
 @mixin activeArea () {
   background-color: $interactive-element-background;
-  border-top: 2px solid $interactive-element-foreground;
+  border-top: 1px solid $interactive-element-foreground;
 }
 
 

@@ -1,17 +1,27 @@
 <template>
 <div  data-component="location-list">
   <Label 
-    :linkedToId="id"
+    :linkedToId="uid"
     text="Choose a location"
   />
-  <ol :id="id">
-      <li v-for="(c, index) in dummyList" 
-        :key="index">
-        <input type="checkbox" 
-          :id="`location-list-item-${id}-${index}`">
-        <label :for="`location-list-item-${id}-${index}`">{{c}}</label>
-      </li>
-  </ol>
+  <select
+    :id="uid"
+    v-model="model"
+    multiple
+  >
+    <option
+      v-for="loc in locsToLangs"
+      :key="loc.id"
+      :data-selected="String(selectedLocs.indexOf(loc.id) > -1)"
+      :value="loc.id">
+        {{loc.countryName}}
+      </option>
+  </select>
+  <div>
+    <em>
+      Hold the Ctrl key to select multiple countries.
+    </em>
+  </div>
 </div>
 </template>
 
@@ -25,27 +35,21 @@ export default {
     Label,
   },
 
+  props: {
+    locsToLangs: {
+      type: Array,
+      required: true,
+    },
+    selectedLocs: {
+      type: Array,
+      required: true,
+    },
+  },
+
   data () {
-    console.log(this)
     return {
-      id: this._uid,
-      dummyList: [
-        'Azerbejan',
-        'the Netherlands',
-        'Spain',
-        'Azerbejan',
-        'the Netherlands',
-        'Spain',
-        'Azerbejan',
-        'the Netherlands',
-        'Spain',
-        'Azerbejan',
-        'the Netherlands',
-        'Spain',
-        'Azerbejan',
-        'the Netherlands',
-        'Spain',
-      ],
+      model: [],
+      uid: String(this._uid),
     }
   },
 }
@@ -60,37 +64,25 @@ export default {
   margin: 1em 0;
   padding: 1em * 0.5;  
 
-  ol {
+  select {
+    border: 0 none;
     @include activeArea;
     padding: 1em * 0.5;
     list-style: none;
     margin: 0;
     padding: 1em * 0.5;
+    width: 100%;
   }
 
-  li {
+  option {
     line-height: 1.5em;
-
-    > input[type="checkbox"] {
-      display: none;
-    }
-
-    > input[type="checkbox"]:checked ~ label {
-      border-bottom: 2px solid $interactive-element-active-part;
-      color: #222;
-    }
-
-    > label {
-      display: block;
-      padding: 2px 0.2em 0 0.2em;
-      margin: 0.3em 0;
-      border-bottom: 1px solid transparentize($color: $interactive-element-active-part, $amount: 1);
-      cursor: pointer;
-      transition: border-bottom 0.2s ease;
-      
-      &:hover {
-        border-bottom: 1px solid lighten($interactive-element-active-part, 20);      
-      }
+    padding: 0.3em 0.5em;
+    height: 2em;
+    color: #222;
+    cursor: pointer;
+  &[data-selected="true"] {
+      border-left: 3px solid $interactive-element-active-part;
+      color: $interactive-element-active-part;
     }
   }
 }

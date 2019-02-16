@@ -12,7 +12,7 @@ const router = new VueRouter({
       component: Intro,
     },
     {
-      path: '/overview/:countryIds',
+      path: '/overview/',
       component: Overview,
     },
   ],

@@ -17,22 +17,22 @@
         {{loc.countryName}}
       </option>
   </select>
-  <div>
-    <em>
-      Hold the Ctrl key to select multiple countries.
-    </em>
-  </div>
+  <ContextualNote>
+    Hold the Ctrl key to select multiple countries.
+  </ContextualNote>
 </div>
 </template>
 
 <script>
-import Label from './Label'
+import Label from '../atoms/Label'
+import ContextualNote from '../atoms/ContextualNote'
 
 export default {
   name: 'LocationList',
 
   components: {
     Label,
+    ContextualNote,
   },
 
   props: {
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../definitions';
+@import '../../definitions';
 
 [data-component="location-list"] {
   min-width: 9em;

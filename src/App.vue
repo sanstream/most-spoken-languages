@@ -6,21 +6,8 @@
 </template>
 
 <script>
-import LocationList from './components/LocationList'
-import LanguageBlobs from './components/LanguageBlobs'
-import {mapState, } from 'vuex'
-
 export default {
   name: 'App',
-
-  components: {
-    LocationList,
-    LanguageBlobs,
-  },
-
-  computed: mapState({
-    displayedLanguages: state => state.displayedLanguages,
-  }),
 }
 </script>
 

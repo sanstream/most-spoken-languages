@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../definitions';
+@import '../../definitions';
 
 [data-component="Label"] {
   @include highLevelLabel();

@@ -6,22 +6,49 @@ import router from '../router'
 const state = {
   countriesToLanguages: languageData,
   displayedLanguages: [
-    'Mandarin Chinese',
-    'Spanish',
-    'English',
-    'Hindi',
-    'Arabic',
-    'Portuguese',
-    'Bengali',
-    'Russian',
-    'Japanese',
+    {
+      id: 'cn',
+      name: 'Mandarin Chinese',
+    },
+    {
+      id: 'es',
+      name: 'Spanish',
+    },
+    {
+      id: 'en',
+      name: 'English',
+    },
+    {
+      id: 'hi',
+      name: 'Hindi',
+    },
+    {
+      id: 'ar',
+      name: 'Arabic',
+    },
+    {
+      id: 'pt',
+      name: 'Portuguese',
+    },
+    {
+      id: 'bn',
+      name: 'Bengali',
+    },
+    {
+      id: 'ru',
+      name: 'Russian',
+    },
+    {
+      id: 'ja',
+      name: 'Japanese',
+    },
   ],
   selectedCountries: [],
 }
 
 const actions = {
   setSelectedCountry (context) {
-    const ids = router.currentRoute.params.countryIds
+    const ids = router.currentRoute.query.countries
     if (ids) {
       context.commit('setSelectedCountry', ids.split('|'))
     } else {

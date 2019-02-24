@@ -4,19 +4,17 @@
     :linkedToId="uid"
     text="Choose a location"
   />
-  <div>
-    <ol>
-      <li
-        v-for="loc in locsToLangs"
-        :key="loc.id"
-        :data-selected="String(selectedLocs.indexOf(loc.id) > -1)"
-        :value="loc.id"
-        @click="$emit('click', loc.id)"
-      >
-        {{loc.countryName}}
-      </li>
-    </ol>
-  </div>
+  <ol>
+    <li
+      v-for="loc in locsToLangs"
+      :key="loc.id"
+      :data-selected="String(selectedLocs.indexOf(loc.id) > -1)"
+      :value="loc.id"
+      @click="$emit('click', loc.id)"
+    >
+      {{loc.countryName}}
+    </li>
+  </ol>
   <ContextualNote>
     It is possible to select multiple countries.
   </ContextualNote>
@@ -70,33 +68,30 @@ export default {
   display: flex;
   flex-direction: column;
 
-  div {
-      flex: 1 1 auto;
-      overflow-y: auto;
-      max-height: 20vh;
+  ol {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    max-height: 20vh;
+    min-width: 9em;
+    border: 0 none;
+    @include activeArea;
+    padding: 1em * 0.5;
+    list-style: none;
+    margin: 0;
+    padding: 1em * 0.5;
+    width: 100%;
+  }
 
-    ol {
-      min-width: 9em;
-      border: 0 none;
-      @include activeArea;
-      padding: 1em * 0.5;
-      list-style: none;
-      margin: 0;
-      padding: 1em * 0.5;
-      width: 100%;
-    }
+  li {
+    line-height: 1.5em;
+    padding: 0.3em 0.5em;
+    height: 2em;
+    color: #222;
+    cursor: pointer;
 
-    li {
-      line-height: 1.5em;
-      padding: 0.3em 0.5em;
-      height: 2em;
-      color: #222;
-      cursor: pointer;
-
-      &[data-selected="true"] {
-        border-left: 3px solid $interactive-element-active-part;
-        color: $interactive-element-active-part;
-      }
+    &[data-selected="true"] {
+      border-left: 3px solid $interactive-element-active-part;
+      color: $interactive-element-active-part;
     }
   }
 }

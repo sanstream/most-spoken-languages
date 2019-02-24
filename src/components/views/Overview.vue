@@ -3,6 +3,7 @@
     <LocationList
       :locsToLangs="locsToLangs"
       :selectedLocs="selectedLocIds"
+      @click="handleCountrySelection"
     />
     <SpokenLanguageResults
       :totalSelectedPopulation="totalSelectedPopulation"
@@ -110,43 +111,27 @@ export default {
       this.$store.dispatch('setSelectedCountry')
     },
   },
+
+  methods: {
+    handleCountrySelection (countryId) {
+      this.$store.dispatch('setSelectedCountry', countryId)
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 @import '../../definitions';
 [data-view="overview"] {
-  ol {
-    display: flex;
-    margin: 1em 0;
-    padding: 0;
-    list-style: none;
-    flex-wrap: wrap;
-    width: calc(100% + 0.5em);
+  display: flex;
+  flex-direction: column;
 
-    li {
-      flex: 1 0 calc(33% - 1em);
-      margin: 0 1em 1em 0;
+  > [data-component="location-list"] {
+    flex: 0 1 auto;
+  }
 
-      [data-bar] {
-        $data-bar-height: 8px;
-        margin: 0.5em 0;
-        width: 100%;
-        height: $data-bar-height;
-        border-radius: $data-bar-height * 0.25;
-        position: relative;
-        overflow: hidden;
-        background-color: $colour-inactive-blue;
-
-        [data-range] {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: $data-bar-height;
-          background-color: $interactive-element-active-part;
-        }
-      }
-    }
+  > [data-component="SpokenLanguageResults"] {
+    flex: 1 1 auto;
   }
 }
 </style>

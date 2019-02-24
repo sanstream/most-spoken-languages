@@ -47,10 +47,12 @@ const state = {
 }
 
 const actions = {
-  setSelectedCountry (context) {
-    const ids = router.currentRoute.query.countries
-    if (ids) {
-      context.commit('setSelectedCountry', ids.split('|'))
+  setSelectedCountry (context, id) {
+    if (id) {
+      context.commit('setSelectedCountry', [ id, ])
+    } else if (!id) {
+      const ids = router.currentRoute.query.countries.split('|')
+      context.commit('setSelectedCountry', ids)
     } else {
       context.commit('setSelectedCountry', [])
     }
@@ -59,7 +61,14 @@ const actions = {
 
 const mutations = {
   setSelectedCountry (state, data) {
-    state.selectedCountries = data
+    data.forEach(cId => {
+      const atPosition = state.selectedCountries.indexOf(cId)
+      if (atPosition === -1) {
+        state.selectedCountries.push(cId)
+      } else {
+        state.selectedCountries.splice(atPosition, 1)
+      }
+    })
   },
 }
 

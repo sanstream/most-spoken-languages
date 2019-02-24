@@ -24,18 +24,26 @@ export default {
   background-color: $background-colour;
   padding: 3em;
   line-height: inherit;
+
   min-height: 100vh;
   min-width: 100vw;
+  height: 100%;
+  width: 100%;
   position: absolute;
   top:0;
   left: 0;
 
-  [data-component="location-list"] {
-    flex: 0 1 auto;
-  }
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 
   h1 {
     color: $colour-blue;
+    flex: 0 0 auto;
+  }
+
+  > [data-view]{
+    flex: 1 1 auto;
   }
 }
 </style>

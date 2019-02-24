@@ -4,21 +4,21 @@
     :linkedToId="uid"
     text="Choose a location"
   />
-  <select
-    :id="uid"
-    v-model="model"
-    multiple
-  >
-    <option
-      v-for="loc in locsToLangs"
-      :key="loc.id"
-      :data-selected="String(selectedLocs.indexOf(loc.id) > -1)"
-      :value="loc.id">
+  <div>
+    <ol>
+      <li
+        v-for="loc in locsToLangs"
+        :key="loc.id"
+        :data-selected="String(selectedLocs.indexOf(loc.id) > -1)"
+        :value="loc.id"
+        @click="$emit('click', loc.id)"
+      >
         {{loc.countryName}}
-      </option>
-  </select>
+      </li>
+    </ol>
+  </div>
   <ContextualNote>
-    Hold the Ctrl key to select multiple countries.
+    It is possible to select multiple countries.
   </ContextualNote>
 </div>
 </template>
@@ -48,9 +48,15 @@ export default {
 
   data () {
     return {
-      model: [],
+      selected: this.selectedLocs,
       uid: String(this._uid),
     }
+  },
+
+  watch: {
+    selectedLocs (newValue) {
+      this.selected = this.selectedLocs
+    },
   },
 }
 </script>
@@ -59,30 +65,38 @@ export default {
 @import '../../definitions';
 
 [data-component="location-list"] {
-  min-width: 9em;
-  overflow-y: auto;
   margin: 1em 0;
-  padding: 1em * 0.5;  
+  padding: 1em * 0.5;
+  display: flex;
+  flex-direction: column;
 
-  select {
-    border: 0 none;
-    @include activeArea;
-    padding: 1em * 0.5;
-    list-style: none;
-    margin: 0;
-    padding: 1em * 0.5;
-    width: 100%;
-  }
+  div {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      max-height: 20vh;
 
-  option {
-    line-height: 1.5em;
-    padding: 0.3em 0.5em;
-    height: 2em;
-    color: #222;
-    cursor: pointer;
-  &[data-selected="true"] {
-      border-left: 3px solid $interactive-element-active-part;
-      color: $interactive-element-active-part;
+    ol {
+      min-width: 9em;
+      border: 0 none;
+      @include activeArea;
+      padding: 1em * 0.5;
+      list-style: none;
+      margin: 0;
+      padding: 1em * 0.5;
+      width: 100%;
+    }
+
+    li {
+      line-height: 1.5em;
+      padding: 0.3em 0.5em;
+      height: 2em;
+      color: #222;
+      cursor: pointer;
+
+      &[data-selected="true"] {
+        border-left: 3px solid $interactive-element-active-part;
+        color: $interactive-element-active-part;
+      }
     }
   }
 }

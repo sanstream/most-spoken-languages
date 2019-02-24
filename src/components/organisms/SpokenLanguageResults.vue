@@ -1,5 +1,5 @@
 <template>
-  <section data-component="">
+  <section data-component="SpokenLanguageResults">
     <h1>
       Of the
       <template>
@@ -63,7 +63,7 @@ export default {
     scale () {
       const t = this.totalSelectedPopulation
       return d3Scale.scaleLinear()
-        .domain([1, this.totalSelectedPopulation, ])
+        .domain([ 1, this.totalSelectedPopulation, ])
         .range([
           0.01 * t, // to make sure tiny ammounts are still visualised.
           1 * t,
@@ -97,3 +97,42 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+@import '../../definitions';
+
+[data-component="SpokenLanguageResults"]
+  ol {
+    display: flex;
+    margin: 1em 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    width: calc(100% + 0.5em);
+
+    li {
+      flex: 1 0 calc(33% - 1em);
+      margin: 0 1em 1em 0;
+
+      [data-bar] {
+        $data-bar-height: 8px;
+        margin: 0.5em 0;
+        width: 100%;
+        height: $data-bar-height;
+        border-radius: $data-bar-height * 0.25;
+        position: relative;
+        overflow: hidden;
+        background-color: $colour-inactive-blue;
+
+        [data-range] {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: $data-bar-height;
+          background-color: $interactive-element-active-part;
+        }
+      }
+    }
+  }
+</style>
+

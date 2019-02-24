@@ -106,12 +106,6 @@ export default {
     this.$store.dispatch('setSelectedCountry')
   },
 
-  watch: {
-    '$route' () {
-      this.$store.dispatch('setSelectedCountry')
-    },
-  },
-
   methods: {
     handleCountrySelection (countryId) {
       this.$store.dispatch('setSelectedCountry', countryId)

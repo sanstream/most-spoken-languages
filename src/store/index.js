@@ -50,7 +50,7 @@ const actions = {
   setSelectedCountry (context, id) {
     if (id) {
       context.commit('setSelectedCountry', [ id, ])
-    } else if (!id) {
+    } else if (!id && router.currentRoute.query.countries) {
       const ids = router.currentRoute.query.countries.split('|')
       context.commit('setSelectedCountry', ids)
     } else {
@@ -68,6 +68,12 @@ const mutations = {
       } else {
         state.selectedCountries.splice(atPosition, 1)
       }
+    })
+
+    router.push({
+      query: {
+        countries: state.selectedCountries.join('|'),
+      },
     })
   },
 }

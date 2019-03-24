@@ -58,8 +58,4 @@
   max-width: $maxWidth;
   padding: 0 calc((100vw - #{$maxWidth}) / 2)
 }
-
-h1 {
-  font-size: 4em;
-}
 </style>

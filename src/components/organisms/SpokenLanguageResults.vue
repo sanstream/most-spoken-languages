@@ -12,16 +12,11 @@
       <li v-for="lang in displayedLanguages"
         :key="lang.id"
       >
-        <div data-bar>
-          <div data-range
-            v-if="speakersPerTopLanguages[lang.id] > 0"
-            :style="`width:${(scale(speakersPerTopLanguages[lang.id])/totalSelectedPopulation) * 100}%`"
-          ></div>
-        </div>
-        <strong>
-          {{speakersPerTopLanguages[lang.id] | formatPopulation}}
-        </strong>
-        speak <br>{{lang.name}}
+        <PeoplePerLanguage
+          :numOfSpeakers="speakersPerTopLanguages[lang.id]"
+          :totalSelectedPopulation="totalSelectedPopulation"
+          :language="lang"
+        />
       </li>
     </ol>
     <ContextualNote>
@@ -32,12 +27,13 @@
 
 <script>
 import numeral from 'numeral'
-import * as d3Scale from 'd3-scale'
 import ContextualNote from '../atoms/ContextualNote'
+import PeoplePerLanguage from '../molecules/PeoplePerLanguage'
 
 export default {
   components: {
     ContextualNote,
+    PeoplePerLanguage,
   },
 
   props: {
@@ -56,18 +52,6 @@ export default {
     speakersPerTopLanguages: {
       type: Object,
       required: true,
-    },
-  },
-
-  computed: {
-    scale () {
-      const t = this.totalSelectedPopulation
-      return d3Scale.scaleLinear()
-        .domain([ 1, this.totalSelectedPopulation, ])
-        .range([
-          0.01 * t, // to make sure tiny ammounts are still visualised.
-          1 * t,
-        ])
     },
   },
 
@@ -113,25 +97,6 @@ export default {
     li {
       flex: 1 0 calc(33% - 1em);
       margin: 0 1em 1em 0;
-
-      [data-bar] {
-        $data-bar-height: 8px;
-        margin: 0.5em 0;
-        width: 100%;
-        height: $data-bar-height;
-        border-radius: $data-bar-height * 0.25;
-        position: relative;
-        overflow: hidden;
-        background-color: $colour-inactive-blue;
-
-        [data-range] {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: $data-bar-height;
-          background-color: $interactive-element-active-part;
-        }
-      }
     }
   }
 </style>

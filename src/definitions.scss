@@ -57,6 +57,8 @@ $heading-colour: #777777;
 @mixin activeArea () {
   background-color: $interactive-element-background;
   border-top: 1px solid $interactive-element-foreground;
+  min-height: 320px;
+  height: 320px;
 }
 
 
@@ -67,7 +69,8 @@ $heading-colour: #777777;
 }
 
 h1, h2 {
-  @include highLevelLabel()
+  @include highLevelLabel();
+  color: $colour-blue;
 }
 
 body {

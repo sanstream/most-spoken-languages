@@ -68,6 +68,10 @@ export default {
   display: flex;
   flex-direction: column;
 
+  > * {
+    flex: 0 0 auto;
+  }
+
   ol {
     flex: 1 1 auto;
     overflow-y: auto;
@@ -85,7 +89,6 @@ export default {
   li {
     line-height: 1.5em;
     padding: 0.3em 0.5em;
-    height: 2em;
     color: #222;
     cursor: pointer;
 

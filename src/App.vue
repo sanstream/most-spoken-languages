@@ -37,8 +37,8 @@ export default {
   flex-direction: column;
   flex-wrap: nowrap;
 
-  h1 {
-    color: $colour-blue;
+  > h1 {
+    margin: 0;
     flex: 0 0 auto;
   }
 

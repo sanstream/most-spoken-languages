@@ -135,10 +135,11 @@ export default {
     display: flex;
     > * {
       flex: 1 1 auto;
+      height: 100%;
     }
 
     [data-component="InteractiveWorldMap"] {
-      height: 400px;
+      // height: 400px;
       max-width: 70%;
       flex: 0 0 auto;
     }

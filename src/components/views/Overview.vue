@@ -1,10 +1,17 @@
 <template>
   <section data-view="overview">
-    <LocationList
-      :locsToLangs="locsToLangs"
-      :selectedLocs="selectedLocIds"
-      @click="handleCountrySelection"
-    />
+    <section class="location-selection-area">
+      <LocationList
+        :locsToLangs="locsToLangs"
+        :selectedLocs="selectedLocIds"
+        @click="handleCountrySelection"
+      />
+      <InteractiveWorldMap
+       :selectedCountries="selectedLocIds"
+       @country="handleCountrySelection"
+      />
+    </section>
+
     <SpokenLanguageResults
       :totalSelectedPopulation="totalSelectedPopulation"
       :selectedLocationsNames="selectedLocationsNames"
@@ -16,6 +23,7 @@
 
 <script>
 import LocationList from '../molecules/LocationList'
+import InteractiveWorldMap from '../molecules/InteractiveWorldMap'
 import SpokenLanguageResults from '../organisms/SpokenLanguageResults'
 import {mapState, } from 'vuex'
 
@@ -25,6 +33,7 @@ export default {
   components: {
     LocationList,
     SpokenLanguageResults,
+    InteractiveWorldMap,
   },
 
   computed: {
@@ -120,8 +129,19 @@ export default {
   display: flex;
   flex-direction: column;
 
-  > [data-component="location-list"] {
+  > .location-selection-area {
     flex: 0 1 auto;
+
+    display: flex;
+    > * {
+      flex: 1 1 auto;
+    }
+
+    [data-component="InteractiveWorldMap"] {
+      height: 400px;
+      max-width: 70%;
+      flex: 0 0 auto;
+    }
   }
 
   > [data-component="SpokenLanguageResults"] {

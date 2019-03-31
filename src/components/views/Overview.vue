@@ -164,7 +164,7 @@ export default {
     display: flex;
 
     > * {
-      margin: 1em 1em;
+      margin: 2em;
       &:first-child {
         margin-left: 0;
       }
@@ -177,7 +177,7 @@ export default {
     $sidebar-width: 20rem;
     [data-component="location-list"] {
       flex: 0 0 $sidebar-width;
-      
+      display: none;
     }
 
     [data-component="InteractiveWorldMap"] {
@@ -186,6 +186,8 @@ export default {
 
     [data-component="SpokenLanguageResults"] {
       flex: 0 0 $sidebar-width;
+      border-right: 1px solid lighten($text-colour, 60%);
+      padding-right: 4em;
     }
   }
 }

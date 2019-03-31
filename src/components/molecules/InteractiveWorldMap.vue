@@ -42,8 +42,6 @@ export default {
 @import '../../definitions';
 
 [data-component="InteractiveWorldMap"] {
-  margin: 1em 0;
-  padding: 1em * 0.5;
   min-width: 600px;
 
   > [data-component="WorldMap"] {

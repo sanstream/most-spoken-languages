@@ -98,6 +98,20 @@ export default {
       flex: 1 0 calc(33% - 1em);
       margin: 0 1em 1em 0;
     }
+
+    @media screen and (max-width: 400px){
+      li {
+        flex: 1 0 100%;
+        margin: 0 0 1em 0;
+      }
+    }
+
+    @media screen and (min-width: 850px) {
+      li {
+        flex: 1 0 100%;
+        margin: 0 0 1em 0;
+      }
+    }
   }
 </style>
 

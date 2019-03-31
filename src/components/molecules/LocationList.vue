@@ -63,9 +63,8 @@ export default {
 @import '../../definitions';
 
 [data-component="location-list"] {
-  margin: 1em 0;
-  padding: 1em * 0.5;
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: column;
 
   > * {
@@ -75,7 +74,6 @@ export default {
   ol {
     flex: 1 1 auto;
     overflow-y: auto;
-    max-height: 20vh;
     min-width: 9em;
     border: 0 none;
     @include activeArea;

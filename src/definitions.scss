@@ -58,17 +58,17 @@ $heading-colour: #777777;
   background-color: $interactive-element-background;
   border-top: 1px solid $interactive-element-foreground;
   min-height: 320px;
-  height: 320px;
 }
 
 
 @mixin highLevelLabel () {
   font-weight: bold;
   font-family: 'Consolas', Courier, monospace;
-  margin: 2em 0 1em;
+  margin-bottom: 1em;
 }
 
 h1, h2 {
+  margin: 2em 0 1em;
   @include highLevelLabel();
   color: $colour-blue;
 }

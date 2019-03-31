@@ -18,8 +18,9 @@
         v-for="path in paths"
         :key="path.id"
         :d="path.d"
-        :class="`${(selectedCountries.indexOf(path.id) > -1) ? 'active' : ''}`"
-        @click="$emit('country', path.id)"
+        :data-active="(selectedCountries.indexOf(path.id) > -1).toString()"
+        :data-disabled="(inactiveCountries.indexOf(path.id) > -1).toString()"
+        @click="(inactiveCountries.indexOf(path.id) > -1) ? '' : $emit('country', path.id)"
       />
     </g>
 </svg>
@@ -31,6 +32,10 @@ export default {
 
   props: {
     selectedCountries: {
+      type: Array,
+      default: () => [],
+    },
+    inactiveCountries: {
       type: Array,
       default: () => [],
     },
@@ -759,7 +764,7 @@ svg[data-component="WorldMap"] {
     stroke: $interactive-element-background;
     fill: $colour-yellow;
 
-    &.active {
+    &[data-active="true"] {
       fill: darken($colour-red, 10);
     }
 
@@ -768,8 +773,9 @@ svg[data-component="WorldMap"] {
       cursor: pointer;
     }
 
-    &.disabled {
-      fill: darken($interactive-element-background, 10);
+    &[data-disabled="true"] {
+      fill: $inactive-colour;
+      cursor: default;
     }
 
   }

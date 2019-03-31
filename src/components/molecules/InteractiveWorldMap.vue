@@ -1,12 +1,13 @@
 <template>
   <div data-component="InteractiveWorldMap">
     <Label
-      :linkedToId="uid"
+      :linkedToId="'map'"
       text="Or pick a country from the map"
     />
     <WorldMap
       @country="$emit('country', $event)"
       :selectedCountries="selectedCountries"
+      :inactiveCountries="inactiveCountries"
     />
     <ContextualNote>
       For some countries the spoken languages are unknown.
@@ -31,6 +32,10 @@ export default {
 
   props: {
     selectedCountries: {
+      type: Array,
+      default: () => [],
+    },
+    inactiveCountries: {
       type: Array,
       default: () => [],
     },

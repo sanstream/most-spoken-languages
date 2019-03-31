@@ -8,6 +8,7 @@
     />
     <InteractiveWorldMap
       :selectedCountries="selectedLocIds"
+      :inactiveCountries="inactiveCountryIds"
       @country="handleCountrySelection"
     />
     <LocationList
@@ -105,6 +106,8 @@ export default {
         return total
       },
       displayedLanguages: state => state.displayedLanguages,
+      inactiveCountryIds: state => Object.keys(state.countriesToLanguages)
+        .filter(id => Object.keys(state.countriesToLanguages[id].languages).length === 0),
     }),
   },
 

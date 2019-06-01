@@ -1,7 +1,7 @@
 <template>
+<div data-component="WorldMap">
   <!-- (c) ammap.com | SVG map of World - Low -->
   <svg
-    data-component="WorldMap"
     viewBox="0 170 1008 500"
   >
     <defs>
@@ -24,6 +24,7 @@
       />
     </g>
   </svg>
+</div>
 </template>
 
 <script>
@@ -757,26 +758,29 @@ export default {
 <style lang="scss">
 @import '../../definitions';
 
-svg[data-component="WorldMap"] {
-  path {
-    stroke-width: 2px;
-    stroke: $interactive-element-background;
-    fill: $colour-yellow;
+div [data-component="WorldMap"] {
+  overflow: auto;
+  svg {
+    min-width: 1500px;
+    path {
+      stroke-width: 2px;
+      stroke: $interactive-element-background;
+      fill: $colour-yellow;
 
-    &[data-active="true"] {
-      fill: darken($colour-red, 10);
+      &[data-active="true"] {
+        fill: darken($colour-red, 10);
+      }
+
+      &:hover {
+        fill: mix(darken($colour-red, 10), $colour-yellow);
+        cursor: pointer;
+      }
+
+      &[data-disabled="true"] {
+        fill: $inactive-colour;
+        cursor: default;
+      }
     }
-
-    &:hover {
-      fill: mix(darken($colour-red, 10), $colour-yellow);
-      cursor: pointer;
-    }
-
-    &[data-disabled="true"] {
-      fill: $inactive-colour;
-      cursor: default;
-    }
-
   }
 }
 </style>

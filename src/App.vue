@@ -1,6 +1,8 @@
 <template>
   <article data-component="most-spoken-languages-app">
-    <h1>The most spoken languages</h1>
+    <header>
+      <h1>The most spoken languages arround the world</h1>
+    </header>
     <router-view></router-view>
   </article>
 </template>

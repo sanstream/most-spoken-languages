@@ -6,7 +6,9 @@
            :style="`width:${(scale(numOfSpeakers)/totalSelectedPopulation) * 100}%`"
       ></div>
     </div>
-    <strong>
+    <strong
+      class="number-of-speakers"
+    >
       {{numOfSpeakers | formatPopulation}}
     </strong>
     speak <br>{{language.name}}
@@ -84,6 +86,10 @@ export default {
       height: $data-bar-height;
       background-color: $colour-red;
     }
+  }
+
+  .number-of-speakers {
+    color: $colour-blue;
   }
 }
 </style>

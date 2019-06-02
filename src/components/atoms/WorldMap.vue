@@ -1,30 +1,30 @@
 <template>
-<div data-component="WorldMap">
-  <!-- (c) ammap.com | SVG map of World - Low -->
-  <svg
-    viewBox="0 170 1008 500"
-  >
-    <defs>
-      <amcharts:ammap
-        projection="mercator"
-        leftLongitude="-169.6"
-        topLatitude="83.68"
-        rightLongitude="190.25"
-        bottomLatitude="-55.55">
-      </amcharts:ammap>
-    </defs>
-    <g>
-      <path
-        v-for="path in paths"
-        :key="path.id"
-        :d="path.d"
-        :data-active="(selectedCountries.indexOf(path.id) > -1).toString()"
-        :data-disabled="(inactiveCountries.indexOf(path.id) > -1).toString()"
-        @click="(inactiveCountries.indexOf(path.id) > -1) ? '' : $emit('country', path.id)"
-      />
-    </g>
-  </svg>
-</div>
+  <div data-component="WorldMap">
+    <!-- (c) ammap.com | SVG map of World - Low -->
+    <svg
+      viewBox="0 170 1008 500"
+    >
+      <defs>
+        <amcharts:ammap
+          projection="mercator"
+          leftLongitude="-169.6"
+          topLatitude="83.68"
+          rightLongitude="190.25"
+          bottomLatitude="-55.55">
+        </amcharts:ammap>
+      </defs>
+      <g>
+        <path
+          v-for="path in paths"
+          :key="path.id"
+          :d="path.d"
+          :data-active="(selectedCountries.indexOf(path.id) > -1).toString()"
+          :data-disabled="(inactiveCountries.indexOf(path.id) > -1).toString()"
+          @click="(inactiveCountries.indexOf(path.id) > -1) ? '' : $emit('country', path.id)"
+        />
+      </g>
+    </svg>
+  </div>
 </template>
 
 <script>
@@ -768,16 +768,16 @@ div [data-component="WorldMap"] {
       fill: $colour-yellow;
 
       &[data-active="true"] {
-        fill: darken($colour-red, 10);
+        fill: $colour-red;
       }
 
       &:hover {
-        fill: mix(darken($colour-red, 10), $colour-yellow);
+        fill: darken($colour-red, 10);
         cursor: pointer;
       }
 
       &[data-disabled="true"] {
-        fill: $inactive-colour;
+        fill: $non-interactive-element-background;
         cursor: default;
       }
     }

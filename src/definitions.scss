@@ -40,16 +40,17 @@
 
 
 // base colours:
-$colour-blue: #075E83;
-$colour-red:  #CF1D01;
-$colour-yellow: #CF9801;
+$colour-blue: rgb(13, 123, 196);
+$colour-red:  rgb(207, 52, 28);
+$colour-yellow: #eaab00;
 $colour-inactive-blue: rgb(107, 165, 190);
 
-$interactive-element-background:#eae9e4;
+$interactive-element-background:#f3f2ef;
+$non-interactive-element-background:#9c9b96;
 $interactive-element-foreground: #FFD050;
 $interactive-element-active-part: $colour-red;
 
-$background-colour: #f2f2f2;
+$background-colour: #fff;
 $text-colour: #444444;
 $inactive-colour: #777777;
 

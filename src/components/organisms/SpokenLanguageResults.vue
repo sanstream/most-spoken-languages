@@ -10,7 +10,7 @@
     </h1>
     <ol>
       <li v-for="lang in displayedLanguages"
-        :key="lang.id"
+          :key="lang.id"
       >
         <PeoplePerLanguage
           :numOfSpeakers="speakersPerTopLanguages[lang.id]"
@@ -114,4 +114,3 @@ export default {
     }
   }
 </style>
-

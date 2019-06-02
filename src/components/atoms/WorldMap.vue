@@ -12,7 +12,7 @@
         rightLongitude="190.25"
         bottomLatitude="-55.55">
       </amcharts:ammap>
-     </defs>
+    </defs>
     <g>
       <path
         v-for="path in paths"
@@ -23,7 +23,7 @@
         @click="(inactiveCountries.indexOf(path.id) > -1) ? '' : $emit('country', path.id)"
       />
     </g>
-</svg>
+  </svg>
 </template>
 
 <script>
@@ -753,7 +753,6 @@ export default {
   },
 }
 </script>
-
 
 <style lang="scss">
 @import '../../definitions';

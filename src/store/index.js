@@ -1,7 +1,9 @@
-import * as languageData from '../../research/refined-data/world-languages.json'
+import languageData from '../../research/refined-data/world-languages.json'
 import Vuex from 'vuex'
 import Vue from 'vue'
 import router from '../router'
+
+console.log(languageData)
 
 const state = {
   countriesToLanguages: languageData,

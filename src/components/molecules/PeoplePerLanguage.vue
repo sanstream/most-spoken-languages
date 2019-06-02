@@ -2,8 +2,8 @@
   <div data-component="PeoplePerLanguage">
     <div data-bar>
       <div data-range
-        v-if="numOfSpeakers > 0"
-        :style="`width:${(scale(numOfSpeakers)/totalSelectedPopulation) * 100}%`"
+           v-if="numOfSpeakers > 0"
+           :style="`width:${(scale(numOfSpeakers)/totalSelectedPopulation) * 100}%`"
       ></div>
     </div>
     <strong>

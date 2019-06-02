@@ -1,24 +1,24 @@
 <template>
-<div  data-component="location-list">
-  <Label 
-    :linkedToId="uid"
-    text="Choose a location"
-  />
-  <ol>
-    <li
-      v-for="loc in locsToLangs"
-      :key="loc.id"
-      :data-selected="String(selectedLocs.indexOf(loc.id) > -1)"
-      :value="loc.id"
-      @click="$emit('click', loc.id)"
-    >
-      {{loc.countryName}}
-    </li>
-  </ol>
-  <ContextualNote>
-    It is possible to select multiple countries.
-  </ContextualNote>
-</div>
+  <div  data-component="location-list">
+    <Label
+      :linkedToId="uid"
+      text="Choose a location"
+    />
+    <ol>
+      <li
+        v-for="loc in locsToLangs"
+        :key="loc.id"
+        :data-selected="String(selectedLocs.indexOf(loc.id) > -1)"
+        :value="loc.id"
+        @click="$emit('click', loc.id)"
+      >
+        {{loc.countryName}}
+      </li>
+    </ol>
+    <ContextualNote>
+      It is possible to select multiple countries.
+    </ContextualNote>
+  </div>
 </template>
 
 <script>

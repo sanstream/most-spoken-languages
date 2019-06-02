@@ -23,7 +23,7 @@
 import LocationList from '../molecules/LocationList'
 import InteractiveWorldMap from '../molecules/InteractiveWorldMap'
 import SpokenLanguageResults from '../organisms/SpokenLanguageResults'
-import {mapState, } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Overview',

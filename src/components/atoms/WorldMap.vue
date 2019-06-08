@@ -759,7 +759,6 @@ export default {
 @import '../../definitions';
 
 div [data-component="WorldMap"] {
-  overflow: auto;
   svg {
     min-width: 1500px;
     path {

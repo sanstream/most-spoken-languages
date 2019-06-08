@@ -39,13 +39,18 @@ export default {
   flex-direction: column;
   flex-wrap: nowrap;
 
-  > h1 {
-    margin: 0;
+  header {
     flex: 0 0 auto;
+    > h1 {
+      margin: 0;
+      font-size: $base-spacing;
+    }
   }
 
   > [data-view]{
+    margin: $base-spacing 0 0 0;
     flex: 1 1 auto;
+    overflow: hidden;
   }
 }
 </style>

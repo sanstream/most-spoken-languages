@@ -47,13 +47,12 @@ export default {
 @import '../../definitions';
 
 [data-component="InteractiveWorldMap"] {
-  min-width: 600px;
+  overflow: auto;
 
   > [data-component="WorldMap"] {
-    display: block;
-    width: 100%;
     border: 0 none;
     @include activeArea;
+    display: none;
   }
 }
 </style>

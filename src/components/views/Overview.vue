@@ -6,16 +6,23 @@
       :displayedLanguages="displayedLanguages"
       :speakersPerTopLanguages="speakersPerTopLanguages"
     />
-    <InteractiveWorldMap
-      :selectedCountries="selectedLocIds"
-      :inactiveCountries="inactiveCountryIds"
-      @country="handleCountrySelection"
-    />
-    <LocationList
-      :locsToLangs="locsToLangs"
-      :selectedLocs="selectedLocIds"
-      @click="handleCountrySelection"
-    />
+    <div
+      class="overview--location-pickers"
+    >
+      <InteractiveWorldMap
+        :selectedCountries="selectedLocIds"
+        :inactiveCountries="inactiveCountryIds"
+        @country="handleCountrySelection"
+      />
+      <div class="overview--locations-by-words">
+        test
+        <LocationList
+          :locsToLangs="locsToLangs"
+          :selectedLocs="selectedLocIds"
+          @click="handleCountrySelection"
+        />
+      </div>
+    </div>
   </section>
 </template>
 
@@ -126,71 +133,29 @@ export default {
 <style lang="scss">
 @import '../../definitions';
 [data-view="overview"] {
+  display: flex;
+  [data-component="SpokenLanguageResults"] {
+    flex: 1 1 12rem;
+    min-width: 12rem;
+  }
 
-  @media screen and (max-width: 400px){
-    flex-direction: row;
-    > .location-selection-area {
+  .overview--location-pickers {
+    flex: 4 0 auto;
+    margin-left: $base-spacing;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    [data-component="InteractiveWorldMap"] {
+      flex: 1 0 auto;
+    }
+
+    .overview--locations-by-words {
+      margin-top: $base-spacing;
+      flex: 1 0 auto;
       [data-component="location-list"] {
         display: none;
       }
-
-      [data-component="InteractiveWorldMap"] {
-        min-width: 100%;
-      }
-    }
-
-    > [data-component="SpokenLanguageResults"] {
-    }
-  }
-
-  @media screen and (max-width: 850px) {
-    flex-direction: column;
-    > .location-selection-area {
-      [data-component="location-list"] {
-        ol {
-          min-height: 8em;
-          height: 8em;
-        }
-      }
-
-      [data-component="InteractiveWorldMap"] {
-        min-width: 100%;
-      }
-    }
-
-    > [data-component="SpokenLanguageResults"] {
-    }
-  }
-
-  @media screen and (min-width: 850px) {
-    // flex-direction: column;
-    display: flex;
-
-    > * {
-      margin: 2em;
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-
-    $sidebar-width: 20rem;
-    [data-component="location-list"] {
-      flex: 0 0 $sidebar-width;
-      display: none;
-    }
-
-    [data-component="InteractiveWorldMap"] {
-      flex: 1 1 auto;
-    }
-
-    [data-component="SpokenLanguageResults"] {
-      flex: 0 0 $sidebar-width;
-      border-right: 1px solid lighten($text-colour, 60%);
-      padding-right: 4em;
     }
   }
 }

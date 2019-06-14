@@ -2,7 +2,7 @@
   <div data-component="InteractiveWorldMap">
     <Label
       :linkedToId="'map'"
-      text="Or pick a country from the map"
+      text="Pick a country from the map"
     />
     <WorldMap
       @country="$emit('country', $event)"
@@ -47,12 +47,18 @@ export default {
 @import '../../definitions';
 
 [data-component="InteractiveWorldMap"] {
-  overflow: auto;
-
+  display: flex;
+  flex-flow: column;
+  > * {
+    flex: 0 0 auto;
+  }
   > [data-component="WorldMap"] {
+    flex: 1 1 auto;
+    max-width: 100%;
+    overflow: auto;
     border: 0 none;
+    overflow: auto;
     @include activeArea;
-    display: none;
   }
 }
 </style>

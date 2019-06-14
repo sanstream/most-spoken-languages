@@ -6,22 +6,17 @@
       :displayedLanguages="displayedLanguages"
       :speakersPerTopLanguages="speakersPerTopLanguages"
     />
-    <div
-      class="overview--location-pickers"
-    >
-      <InteractiveWorldMap
-        :selectedCountries="selectedLocIds"
-        :inactiveCountries="inactiveCountryIds"
-        @country="handleCountrySelection"
+    <InteractiveWorldMap
+      :selectedCountries="selectedLocIds"
+      :inactiveCountries="inactiveCountryIds"
+      @country="handleCountrySelection"
+    />
+    <div class="overview--locations-by-words">
+      <LocationList
+        :locsToLangs="locsToLangs"
+        :selectedLocs="selectedLocIds"
+        @click="handleCountrySelection"
       />
-      <div class="overview--locations-by-words">
-        test
-        <LocationList
-          :locsToLangs="locsToLangs"
-          :selectedLocs="selectedLocIds"
-          @click="handleCountrySelection"
-        />
-      </div>
     </div>
   </section>
 </template>
@@ -133,29 +128,31 @@ export default {
 <style lang="scss">
 @import '../../definitions';
 [data-view="overview"] {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(12rem, 40%) 60%;
+  grid-template-rows: 50% 50%;
+  grid-gap: $base-spacing;
+
   [data-component="SpokenLanguageResults"] {
-    flex: 1 1 12rem;
-    min-width: 12rem;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
   }
 
-  .overview--location-pickers {
-    flex: 4 0 auto;
-    margin-left: $base-spacing;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+  [data-component="InteractiveWorldMap"] {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
 
-    [data-component="InteractiveWorldMap"] {
-      flex: 1 0 auto;
-    }
-
-    .overview--locations-by-words {
-      margin-top: $base-spacing;
-      flex: 1 0 auto;
-      [data-component="location-list"] {
-        display: none;
-      }
+  .overview--locations-by-words {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    [data-component="location-list"] {
     }
   }
 }

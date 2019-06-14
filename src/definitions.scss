@@ -71,7 +71,7 @@ $inactive-colour: #777777;
 }
 
 h1, h2 {
-  margin: 2em 0 1em;
+  margin: 0 0 1em;
   @include highLevelLabel();
   color: $colour-blue;
 }

@@ -63,6 +63,8 @@ export default {
 @import '../../definitions';
 
 [data-component="location-list"] {
+  max-height: 100%;
+  max-width: 20rem;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;

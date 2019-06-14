@@ -11,11 +11,13 @@
       :inactiveCountries="inactiveCountryIds"
       @country="handleCountrySelection"
     />
-    <LocationList
-      :locsToLangs="locsToLangs"
-      :selectedLocs="selectedLocIds"
-      @click="handleCountrySelection"
-    />
+    <div class="overview--locations-by-words">
+      <LocationList
+        :locsToLangs="locsToLangs"
+        :selectedLocs="selectedLocIds"
+        @click="handleCountrySelection"
+      />
+    </div>
   </section>
 </template>
 
@@ -126,71 +128,31 @@ export default {
 <style lang="scss">
 @import '../../definitions';
 [data-view="overview"] {
+  display: grid;
+  grid-template-columns: minmax(12rem, 40%) 60%;
+  grid-template-rows: 50% 50%;
+  grid-gap: $base-spacing;
 
-  @media screen and (max-width: 400px){
-    flex-direction: row;
-    > .location-selection-area {
-      [data-component="location-list"] {
-        display: none;
-      }
-
-      [data-component="InteractiveWorldMap"] {
-        min-width: 100%;
-      }
-    }
-
-    > [data-component="SpokenLanguageResults"] {
-    }
+  [data-component="SpokenLanguageResults"] {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
   }
 
-  @media screen and (max-width: 850px) {
-    flex-direction: column;
-    > .location-selection-area {
-      [data-component="location-list"] {
-        ol {
-          min-height: 8em;
-          height: 8em;
-        }
-      }
-
-      [data-component="InteractiveWorldMap"] {
-        min-width: 100%;
-      }
-    }
-
-    > [data-component="SpokenLanguageResults"] {
-    }
+  [data-component="InteractiveWorldMap"] {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
   }
 
-  @media screen and (min-width: 850px) {
-    // flex-direction: column;
-    display: flex;
-
-    > * {
-      margin: 2em;
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-
-    $sidebar-width: 20rem;
+  .overview--locations-by-words {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
     [data-component="location-list"] {
-      flex: 0 0 $sidebar-width;
-      display: none;
-    }
-
-    [data-component="InteractiveWorldMap"] {
-      flex: 1 1 auto;
-    }
-
-    [data-component="SpokenLanguageResults"] {
-      flex: 0 0 $sidebar-width;
-      border-right: 1px solid lighten($text-colour, 60%);
-      padding-right: 4em;
     }
   }
 }

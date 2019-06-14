@@ -9,7 +9,7 @@ const state = {
   countriesToLanguages: languageData,
   displayedLanguages: [
     {
-      id: 'cn',
+      id: 'zh',
       name: 'Mandarin Chinese',
     },
     {

@@ -1,5 +1,8 @@
 <template>
   <section data-view="overview">
+    <header>
+      <h1>The most spoken languages arround the world</h1>
+    </header>
     <SpokenLanguageResults
       :totalSelectedPopulation="totalSelectedPopulation"
       :selectedLocationsNames="selectedLocationsNames"
@@ -130,30 +133,38 @@ export default {
 [data-view="overview"] {
   display: grid;
   grid-template-columns: minmax(12rem, 40%) 60%;
-  grid-template-rows: 50% 50%;
+  // grid-template-rows: 3em calc(50% - 3em) calc(50% - 3em);
+  grid-template-areas:  "header header"
+                        "lefty right1"
+                        "lefty right2";
   grid-gap: $base-spacing;
+  height: calc(100vh - #{$base-spacing * 2});
+  max-height: calc(100vh - #{$base-spacing * 2});
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+
+  > * {
+    max-height: 100%;
+    overflow: auto;
+  }
+
+  header {
+    grid-area: header;
+  }
 
   [data-component="SpokenLanguageResults"] {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
+    grid-area: lefty;
+    max-height: 100%;
   }
 
   [data-component="InteractiveWorldMap"] {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-area: right1;
+    max-height: 100%;
   }
 
   .overview--locations-by-words {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    [data-component="location-list"] {
-    }
+    grid-area: right2;
   }
 }
 </style>

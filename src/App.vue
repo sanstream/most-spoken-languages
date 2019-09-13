@@ -1,8 +1,5 @@
 <template>
   <article data-component="most-spoken-languages-app">
-    <header>
-      <h1>The most spoken languages arround the world</h1>
-    </header>
     <router-view></router-view>
   </article>
 </template>
@@ -40,15 +37,16 @@ export default {
   flex-wrap: nowrap;
 
   header {
-    flex: 0 0 auto;
     > h1 {
       margin: 0;
-      font-size: $base-spacing;
+      font-size: 2rem;
     }
   }
 
   > [data-view]{
-    margin: $base-spacing 0 0 0;
+    margin: 0 auto;
+    max-width: 1024px;
+    width: 100vw;
     flex: 1 1 auto;
     overflow: hidden;
   }

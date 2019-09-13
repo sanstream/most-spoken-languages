@@ -92,7 +92,6 @@ export default {
     padding: 0;
     list-style: none;
     flex-wrap: wrap;
-    width: calc(100% + 0.5em);
 
     li {
       flex: 1 0 calc(33% - 1em);

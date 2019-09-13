@@ -39,7 +39,8 @@
 }
 
 //spacing:
-$base-spacing: 2rem;
+$base-spacing: 3rem;
+$maxWidthText: 950px;
 
 // base colours:
 $colour-blue: rgb(13, 123, 196);
@@ -60,7 +61,6 @@ $inactive-colour: #777777;
 @mixin activeArea () {
   background-color: $interactive-element-background;
   border-top: 1px solid $interactive-element-foreground;
-  min-height: 320px;
 }
 
 

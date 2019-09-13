@@ -1,5 +1,9 @@
 <template>
   <section data-component="intro">
+    <header>
+      <h1>The most spoken languages arround the world</h1>
+    </header>
+
     <p>
       When we are raised by our family we naturally learn the language they speak.
       This helps us to communicate. Share ideas and learn from them.
@@ -53,8 +57,7 @@ export default {
 @import '../../definitions';
 
 [data-component="intro"] {
-  $maxWidth: 1024px;
-  max-width: $maxWidth;
-  padding: 0 calc((100vw - #{$maxWidth}) / 2)
+  max-width: $maxWidthText;
+  margin: 0 auto;
 }
 </style>

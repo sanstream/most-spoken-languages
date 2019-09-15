@@ -1,12 +1,10 @@
 import languageData from '../../research/refined-data/world-languages.json'
 import Vuex from 'vuex'
 import Vue from 'vue'
-import router from '../router'
-
-console.log(languageData)
 
 const state = {
   countriesToLanguages: languageData,
+  noOfcountries: Object.keys(languageData).length,
   displayedLanguages: [
     {
       id: 'zh',
@@ -49,34 +47,30 @@ const state = {
 }
 
 const actions = {
-  setSelectedCountry (context, id) {
-    if (id) {
-      context.commit('setSelectedCountry', [ id, ])
-    } else if (!id && router.currentRoute.query.countries) {
-      const ids = router.currentRoute.query.countries.split('|')
-      context.commit('setSelectedCountry', ids)
-    } else {
-      context.commit('setSelectedCountry', [])
-    }
+  setSelectedCountries (context, ids) {
+    context.commit('setSelectedCountries', ids)
+  },
+
+  selectAllCountries (context) {
+    context.commit('selectAllCountries')
+  },
+
+  resetAllCountries (context) {
+    context.commit('setSelectedCountries', [])
   },
 }
 
 const mutations = {
-  setSelectedCountry (state, data) {
-    data.forEach(cId => {
-      const atPosition = state.selectedCountries.indexOf(cId)
-      if (atPosition === -1) {
-        state.selectedCountries.push(cId)
-      } else {
-        state.selectedCountries.splice(atPosition, 1)
-      }
-    })
+  setSelectedCountries (state, data) {
+    state.selectedCountries = data
+  },
 
-    router.push({
-      query: {
-        countries: state.selectedCountries.join('|'),
-      },
-    })
+  selectAllCountries (state) {
+    state.selectedCountries = Object.keys(state.countriesToLanguages)
+  },
+
+  resetSelectedCountries (state) {
+    state.selectedCountries = []
   },
 }
 

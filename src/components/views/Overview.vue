@@ -21,6 +21,11 @@
         @click="handleCountrySelection"
       />
     </div>
+    <LabeledCheckbox
+      class="overview--select-the-world"
+      labelText="Select the whole world"
+      v-model="theWholeWorld"
+    />
   </section>
 </template>
 
@@ -28,6 +33,7 @@
 import LocationList from '../molecules/LocationList'
 import InteractiveWorldMap from '../molecules/InteractiveWorldMap'
 import SpokenLanguageResults from '../organisms/SpokenLanguageResults'
+import LabeledCheckbox from '../molecules/LabeledCheckbox'
 import { mapState } from 'vuex'
 
 export default {
@@ -37,6 +43,38 @@ export default {
     LocationList,
     SpokenLanguageResults,
     InteractiveWorldMap,
+    LabeledCheckbox,
+  },
+
+  data () {
+    return {
+      theWholeWorld: false,
+    }
+  },
+
+  watch: {
+    theWholeWorld (value) {
+      if (value === true) {
+        this.$router.push({
+          query: {
+            countries: 'all',
+          },
+        })
+      } else {
+        this.$router.push({
+          query: {
+            countries: '',
+          },
+        })
+      }
+    },
+
+    $route (from) {
+      this.handleRouteChanges(from)
+    },
+  },
+
+  mounted () {
   },
 
   computed: {
@@ -113,16 +151,41 @@ export default {
       displayedLanguages: state => state.displayedLanguages,
       inactiveCountryIds: state => Object.keys(state.countriesToLanguages)
         .filter(id => Object.keys(state.countriesToLanguages[id].languages).length === 0),
+      allCountriesAreSelected: state => state.selectedCountries.length === state.noOfcountries,
     }),
   },
 
   created () {
-    this.$store.dispatch('setSelectedCountry')
+    this.handleRouteChanges(this.$route)
   },
 
   methods: {
     handleCountrySelection (countryId) {
-      this.$store.dispatch('setSelectedCountry', countryId)
+      let newCollection = []
+      if (this.selectedLocIds.indexOf(countryId) === -1) {
+        newCollection = [ ...this.selectedLocIds, countryId, ]
+      } else {
+        newCollection = this.selectedLocIds.filter(id => id !== countryId)
+      }
+
+      this.$router.push({
+        query: {
+          countries: newCollection.join('+'),
+        },
+      })
+    },
+
+    handleRouteChanges (to) {
+      if (to.query.countries && to.query.countries.split('+').length) {
+        const countryIds = to.query.countries.split('+')
+        if (countryIds[0] === 'all') {
+          this.$store.dispatch('selectAllCountries')
+        } else {
+          this.$store.dispatch('setSelectedCountries', countryIds)
+        }
+      } else {
+        this.$store.dispatch('resetAllCountries')
+      }
     },
   },
 }
@@ -132,11 +195,11 @@ export default {
 @import '../../definitions';
 [data-view="overview"] {
   display: grid;
-  grid-template-columns: minmax(12rem, 40%) 60%;
+  grid-template-columns: minmax(12rem, 40%) 30% 30%;
   // grid-template-rows: 3em calc(50% - 3em) calc(50% - 3em);
-  grid-template-areas:  "header header"
-                        "lefty right1"
-                        "lefty right2";
+  grid-template-areas:  "header header header"
+                        "lefty right1 right1"
+                        "lefty right2 bottomRight";
   grid-gap: $base-spacing;
   height: calc(100vh - #{$base-spacing * 2});
   max-height: calc(100vh - #{$base-spacing * 2});
@@ -165,6 +228,10 @@ export default {
 
   .overview--locations-by-words {
     grid-area: right2;
+  }
+
+  .overview--select-the-world {
+    grid-area: bottomRight;
   }
 }
 </style>

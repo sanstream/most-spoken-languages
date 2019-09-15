@@ -1,5 +1,5 @@
 <template>
-  <label data-component="Label" :for="`#${linkedToId}`">{{text}}:</label>
+  <label data-component="Label" :for="`${linkedToId}`">{{text}}</label>
 </template>
 
 <script>

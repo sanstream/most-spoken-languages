@@ -53,7 +53,7 @@ export default {
       const oneBillion = 1000000000
       const oneMillion = 1000000
 
-      if (count / oneBillion > 1) {
+      if (count >= oneBillion) {
         return `${Math.round(count / oneBillion)} billion`
       } else if (count / oneMillion > 1) {
         return `${Math.round(count / oneMillion)} million`

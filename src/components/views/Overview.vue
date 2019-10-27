@@ -5,7 +5,7 @@
     </header>
     <SpokenLanguageResults
       :totalSelectedPopulation="totalSelectedPopulation"
-      :selectedLocationsNames="selectedLocationsNames"
+      :selectedLocationsNames="allCountriesAreSelected ? ['the world'] : selectedLocationsNames"
       :displayedLanguages="displayedLanguages"
       :speakersPerTopLanguages="speakersPerTopLanguages"
     />
@@ -23,8 +23,9 @@
     </div>
     <LabeledCheckbox
       class="overview--select-the-world"
-      labelText="Select the whole world"
-      v-model="theWholeWorld"
+      labelText="The whole world"
+      :value="allCountriesAreSelected"
+      @input="handleSelectWholeWorld"
     />
   </section>
 </template>
@@ -53,28 +54,13 @@ export default {
   },
 
   watch: {
-    theWholeWorld (value) {
-      if (value === true) {
-        this.$router.push({
-          query: {
-            countries: 'all',
-          },
-        })
-      } else {
-        this.$router.push({
-          query: {
-            countries: '',
-          },
-        })
-      }
-    },
-
     $route (from) {
       this.handleRouteChanges(from)
     },
   },
 
   mounted () {
+    this.handleRouteChanges(this.$route)
   },
 
   computed: {
@@ -113,18 +99,18 @@ export default {
             const country = state.countriesToLanguages[countryId]
             const languages = country.languages
             if (languages[lang.id]) {
-              // if both UN and CIA data
-              if (languages[lang.id].CIA && languages[lang.id].UN) {
-                const CIA = (languages[lang.id].CIA.percentage / 100) * country.populationCount
-                const UN = languages[lang.id].UN.count
-                output[lang.id] += (CIA + UN) / 2
-              // if only UN data
-              } else if (languages[lang.id].UN) {
-                output[lang.id] += languages[lang.id].UN.count
-              // if only CIA data
-              } else if (languages[lang.id].CIA) {
-                output[lang.id] += languages[lang.id].CIA.percentage * country.populationCount
+              // There is both census data form the CIA and the UN, but the formats
+              // are different, UN uses absolute numbers and CIA percentages
+              let CIA = 0
+              let UN = 0
+              if (languages[lang.id].UN && languages[lang.id].UN.count) {
+                // UN data is most precise:
+                UN = languages[lang.id].UN.count
+              } else if (languages[lang.id].CIA && languages[lang.id].CIA.percentage) {
+                // CIA census data is less accurate and precise, so it used as a fallback option.
+                CIA = (languages[lang.id].CIA.percentage / 100) * country.populationCount
               }
+              output[lang.id] += CIA + UN
             }
           })
         })
@@ -156,7 +142,6 @@ export default {
   },
 
   created () {
-    this.handleRouteChanges(this.$route)
   },
 
   methods: {
@@ -173,6 +158,22 @@ export default {
           countries: newCollection.join('+'),
         },
       })
+    },
+
+    handleSelectWholeWorld (isChecked) {
+      if (isChecked) {
+        this.$router.push({
+          query: {
+            countries: 'all',
+          },
+        })
+      } else {
+        this.$router.push({
+          query: {
+            countries: '',
+          },
+        })
+      }
     },
 
     handleRouteChanges (to) {
@@ -199,7 +200,8 @@ export default {
   // grid-template-rows: 3em calc(50% - 3em) calc(50% - 3em);
   grid-template-areas:  "header header header"
                         "lefty right1 right1"
-                        "lefty right2 bottomRight";
+                        "lefty right2 right2"
+                        "lefty right3 right3";
   grid-gap: $base-spacing;
   height: calc(100vh - #{$base-spacing * 2});
   max-height: calc(100vh - #{$base-spacing * 2});
@@ -227,11 +229,11 @@ export default {
   }
 
   .overview--locations-by-words {
-    grid-area: right2;
+    grid-area: right3;
   }
 
   .overview--select-the-world {
-    grid-area: bottomRight;
+    grid-area: right2;
   }
 }
 </style>

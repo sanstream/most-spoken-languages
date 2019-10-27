@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div data-component="LabeledCheckbox">
     <input
       type="checkbox"
-      :value="value"
+      :checked="value"
       @change="$emit('input', $event.target.checked)"
       id="fancy-label"
     />
@@ -33,3 +33,16 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+[data-component="LabeledCheckbox"] {
+  cursor: pointer;
+  > * {
+    cursor: inherit;
+  }
+
+  label {
+    padding-left: 1em;
+  }
+}
+</style>

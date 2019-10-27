@@ -23,7 +23,7 @@ export default {
 
 [data-component="Label"] {
   @include highLevelLabel();
-  display: block;
+  display: inline-block;
 }
 
 </style>

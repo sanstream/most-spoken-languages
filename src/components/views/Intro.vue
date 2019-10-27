@@ -41,7 +41,7 @@
     </p>
 
     <router-link
-      to="/overview">
+      to="/overview?countries=all">
       Load the overview
     </router-link>
   </section>

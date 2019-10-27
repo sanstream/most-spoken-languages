@@ -3,7 +3,15 @@
     <header>
       <h1>The most spoken languages arround the world</h1>
     </header>
+    <section v-if="noCountriesSelected">
+      <h2>Nothing has been selected.</h2>
+
+      <p>Please select a country via the map or search for it in the list.</p>
+
+      <p>Or just select the whole world.</p>
+    </section>
     <SpokenLanguageResults
+      v-else
       :totalSelectedPopulation="totalSelectedPopulation"
       :selectedLocationsNames="allCountriesAreSelected ? ['the world'] : selectedLocationsNames"
       :displayedLanguages="displayedLanguages"
@@ -138,6 +146,7 @@ export default {
       inactiveCountryIds: state => Object.keys(state.countriesToLanguages)
         .filter(id => Object.keys(state.countriesToLanguages[id].languages).length === 0),
       allCountriesAreSelected: state => state.selectedCountries.length === state.noOfcountries,
+      noCountriesSelected: state => state.selectedCountries.length === 0,
     }),
   },
 

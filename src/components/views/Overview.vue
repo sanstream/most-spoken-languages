@@ -17,24 +17,26 @@
       :displayedLanguages="displayedLanguages"
       :speakersPerTopLanguages="speakersPerTopLanguages"
     />
-    <InteractiveWorldMap
-      :selectedCountries="selectedLocIds"
-      :inactiveCountries="inactiveCountryIds"
-      @country="handleCountrySelection"
-    />
-    <div class="overview--locations-by-words">
-      <LocationList
-        :locsToLangs="locsToLangs"
-        :selectedLocs="selectedLocIds"
-        @click="handleCountrySelection"
+    <form>
+      <InteractiveWorldMap
+        :selectedCountries="selectedLocIds"
+        :inactiveCountries="inactiveCountryIds"
+        @country="handleCountrySelection"
       />
-    </div>
-    <LabeledCheckbox
-      class="overview--select-the-world"
-      labelText="The whole world"
-      :value="allCountriesAreSelected"
-      @input="handleSelectWholeWorld"
-    />
+      <div class="overview--locations-by-words">
+        <LocationList
+          :locsToLangs="locsToLangs"
+          :selectedLocs="selectedLocIds"
+          @click="handleCountrySelection"
+        />
+      </div>
+      <LabeledCheckbox
+        class="overview--select-the-world"
+        labelText="The whole world"
+        :value="allCountriesAreSelected"
+        @input="handleSelectWholeWorld"
+      />
+    </form>
   </section>
 </template>
 
@@ -205,17 +207,15 @@ export default {
 @import '../../definitions';
 [data-view="overview"] {
   display: grid;
-  grid-template-columns: minmax(12rem, 40%) 30% 30%;
+  grid-template-columns: minmax(12rem, 25%) 75%;
   // grid-template-rows: 3em calc(50% - 3em) calc(50% - 3em);
-  grid-template-areas:  "header header header"
-                        "lefty right1 right1"
-                        "lefty right2 right2"
-                        "lefty right3 right3";
+  grid-template-areas:  "header header"
+                        "left right";
   grid-gap: $base-spacing;
   height: calc(100vh - #{$base-spacing * 2});
   max-height: calc(100vh - #{$base-spacing * 2});
   width: 100%;
-  max-width: 1024px;
+  max-width: 1400px;
   margin: 0 auto;
 
   > * {
@@ -228,21 +228,40 @@ export default {
   }
 
   [data-component="SpokenLanguageResults"] {
-    grid-area: lefty;
+    grid-area: left;
     max-height: 100%;
   }
 
-  [data-component="InteractiveWorldMap"] {
-    grid-area: right1;
-    max-height: 100%;
+  form {
+    grid-area: right;
+    display: grid;
+    grid-template-columns: calc(50% - #{$base-spacing / 4}) calc(50% - #{$base-spacing / 4});
+    grid-template-areas:  "top top"
+                          "middle middle"
+                          "left right";
+    grid-gap: $base-spacing / 2;
+    height: calc(100vh - #{$base-spacing * 3});
+    max-height: calc(100vh - #{$base-spacing * 3});
+
+    > * {
+      max-height: 100%;
+      overflow: auto;
+    }
+
+    [data-component="InteractiveWorldMap"] {
+      grid-area: top;
+      max-height: fit-content;
+      max-width: fit-content;
+    }
+
+    .overview--locations-by-words {
+      grid-area: left;
+    }
+
+    .overview--select-the-world {
+      grid-area: middle;
+    }
   }
 
-  .overview--locations-by-words {
-    grid-area: right3;
-  }
-
-  .overview--select-the-world {
-    grid-area: right2;
-  }
 }
 </style>

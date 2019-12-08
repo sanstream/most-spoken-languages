@@ -45,8 +45,8 @@ export default {
 
   > [data-view]{
     margin: 0 auto;
-    max-width: 1024px;
-    width: 100vw;
+    max-width: 1400px;
+    width: auto;
     flex: 1 1 auto;
     overflow: hidden;
   }

@@ -4,9 +4,14 @@
       :linkedToId="uid"
       text="Choose a location"
     />
+    <SearchField
+      class="location-list--filter-field"
+      v-model="filterText"
+      placeholder="Type text to filter..."
+    />
     <ol>
       <li
-        v-for="loc in locsToLangs"
+        v-for="loc in filteredLocations"
         :key="loc.id"
         :data-selected="String(selectedLocs.indexOf(loc.id) > -1)"
         :value="loc.id"
@@ -24,6 +29,7 @@
 <script>
 import Label from '../atoms/Label'
 import ContextualNote from '../atoms/ContextualNote'
+import SearchField from '../atoms/SearchField'
 
 export default {
   name: 'LocationList',
@@ -31,6 +37,7 @@ export default {
   components: {
     Label,
     ContextualNote,
+    SearchField,
   },
 
   props: {
@@ -48,6 +55,7 @@ export default {
     return {
       selected: this.selectedLocs,
       uid: String(this._uid),
+      filterText: '',
     }
   },
 
@@ -56,12 +64,22 @@ export default {
       this.selected = this.selectedLocs
     },
   },
+
+  computed: {
+    filteredLocations () {
+      if (this.filterText.length) {
+        const test = new RegExp(this.filterText, 'ig')
+        return this.locsToLangs.filter(loc => test.test(loc.countryName))
+      } else {
+        return this.locsToLangs
+      }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 @import '../../definitions';
-
 [data-component="location-list"] {
   max-height: 100%;
   max-width: 20rem;
@@ -73,6 +91,10 @@ export default {
     flex: 0 0 auto;
   }
 
+  .location-list--filter-field {
+    margin-bottom: 2rem;
+  }
+
   ol {
     flex: 1 1 auto;
     overflow-y: auto;
@@ -82,7 +104,6 @@ export default {
     padding: 1em * 0.5;
     list-style: none;
     margin: 0;
-    padding: 1em * 0.5;
     width: 100%;
   }
 

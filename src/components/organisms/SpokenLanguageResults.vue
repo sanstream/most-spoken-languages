@@ -105,7 +105,7 @@ export default {
       }
     }
 
-    @media screen and (min-width: 850px) {
+    @media screen and (min-width: $medium-screen) {
       li {
         flex: 1 0 100%;
         margin: 0 0 1em 0;

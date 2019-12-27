@@ -33,7 +33,7 @@ export default {
   font-size: 100%;
   line-height: 1.4em;
   background-color: $background-colour;
-  padding: 9rem 0 3rem 0;
+  padding: 0 0 3rem 0;
   line-height: inherit;
 
   min-height: 100vh;
@@ -46,14 +46,12 @@ export default {
   left: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   header {
     flex: 0 0;
     background-color: $background-colour;
-    height: 9rem;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     z-index: 1;
     width: 100%;
     padding: 0 2rem;
@@ -62,17 +60,20 @@ export default {
     h1 {
       max-width: 1400px;
       width: auto;
-      margin: 3rem auto;
-      > * {
+      margin: 2rem auto;
+      font-size: 1.4rem;
+    }
+
+    @media screen and (max-width: 400px){
+      h1 {
         font-size: 2rem;
-        display: block;
       }
     }
   }
 
   .msl-content {
     flex: 1 0;
-    padding: 0 2rem;
+    padding: 2rem 2rem 0 2rem;
   }
 
   .msl-view {

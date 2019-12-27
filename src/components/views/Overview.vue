@@ -1,6 +1,22 @@
 <template>
   <section data-view="overview">
-    <section v-if="noCountriesSelected">
+    <form>
+      <InteractiveWorldMap
+        :selectedCountries="selectedLocIds"
+        :inactiveCountries="inactiveCountryIds"
+        @country="handleCountrySelection"
+      />
+      <LabeledCheckbox
+        class="overview--select-the-world"
+        labelText="The whole world"
+        :value="allCountriesAreSelected"
+        @input="handleSelectWholeWorld"
+      />
+    </form>
+    <section
+      v-if="noCountriesSelected"
+      class="overview--no-data"
+    >
       <h2>Nothing has been selected.</h2>
 
       <p>Please select a country via the map or search for it in the list.</p>
@@ -18,7 +34,9 @@
 </template>
 
 <script>
+import InteractiveWorldMap from '../molecules/InteractiveWorldMap'
 import SpokenLanguageResults from '../organisms/SpokenLanguageResults'
+import LabeledCheckbox from '../molecules/LabeledCheckbox'
 import { mapState } from 'vuex'
 
 export default {
@@ -26,6 +44,8 @@ export default {
 
   components: {
     SpokenLanguageResults,
+    InteractiveWorldMap,
+    LabeledCheckbox,
   },
 
   data () {
@@ -181,6 +201,21 @@ export default {
     max-height: 100%;
     overflow: auto;
   }
+}
 
+@media screen and (min-width: $medium-screen) {
+  [data-view="overview"] {
+    display: flex;
+    flex-direction: row;
+    > form {
+      flex: 1 0;
+    }
+
+    > .overview--no-data,
+    > [data-component="SpokenLanguageResults"] {
+      flex: 0 0 20rem;
+      padding-left: 2rem;
+    }
+  }
 }
 </style>

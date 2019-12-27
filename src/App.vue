@@ -2,7 +2,17 @@
   <main data-component="most-spoken-languages-app">
     <header>
       <div>
-        <h1>The most spoken languages arround the world</h1>
+        <h1>The most spoken languages arround the world
+          <br>
+          <small>
+            by
+            <a
+              href="https://www.sanstream.nl"
+              target="_blank"
+            >Studio Sanstream</a>
+            &copy; 2019
+          </small>
+        </h1>
       </div>
     </header>
     <div class="msl-content">
@@ -62,6 +72,13 @@ export default {
       width: auto;
       margin: 2rem auto;
       font-size: 1.4rem;
+
+      small,
+      small a {
+        color: $text-colour;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
     }
 
     @media screen and (max-width: 400px){

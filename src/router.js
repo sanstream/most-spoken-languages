@@ -10,10 +10,16 @@ const router = new VueRouter({
     {
       path: '/',
       component: Intro,
+      meta: {
+        title: 'The most spoken languages arround the world',
+      },
     },
     {
       path: '/overview/',
       component: Overview,
+      meta: {
+        title: 'The most spoken languages arround the world',
+      },
     },
   ],
 })

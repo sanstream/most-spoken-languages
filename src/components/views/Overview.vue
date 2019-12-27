@@ -208,7 +208,7 @@ export default {
 [data-view="overview"] {
   display: grid;
   grid-template-columns: minmax(12rem, 25%) 75%;
-  // grid-template-rows: 3em calc(50% - 3em) calc(50% - 3em);
+  grid-template-rows: 3em calc(70% - 3em);
   grid-template-areas:  "header header"
                         "left right";
   grid-gap: $base-spacing;
@@ -235,10 +235,11 @@ export default {
   form {
     grid-area: right;
     display: grid;
-    grid-template-columns: calc(50% - #{$base-spacing / 4}) calc(50% - #{$base-spacing / 4});
-    grid-template-areas:  "top top"
-                          "middle middle"
-                          "left right";
+    grid-template-rows: 3fr 3rem 2fr;
+    grid-template-columns: repeat(2, 1fr);
+    // grid-template-areas:  "top"
+    //                       "middle"
+    //                       "bottom";
     grid-gap: $base-spacing / 2;
     height: calc(100vh - #{$base-spacing * 3});
     max-height: calc(100vh - #{$base-spacing * 3});
@@ -249,17 +250,20 @@ export default {
     }
 
     [data-component="InteractiveWorldMap"] {
-      grid-area: top;
+      grid-column: 1 / 3;
+      grid-row: 1;
       max-height: fit-content;
       max-width: fit-content;
     }
 
     .overview--locations-by-words {
-      grid-area: left;
+      grid-column: 1 / 3;
+      grid-row: 3 / 4;
     }
 
     .overview--select-the-world {
-      grid-area: middle;
+      grid-column: 1;
+      grid-row: 2 / 3;
     }
   }
 

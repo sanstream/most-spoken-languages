@@ -1,8 +1,5 @@
 <template>
   <section data-view="overview">
-    <header>
-      <h1>The most spoken languages arround the world</h1>
-    </header>
     <section v-if="noCountriesSelected">
       <h2>Nothing has been selected.</h2>
 
@@ -17,44 +14,18 @@
       :displayedLanguages="displayedLanguages"
       :speakersPerTopLanguages="speakersPerTopLanguages"
     />
-    <form>
-      <InteractiveWorldMap
-        :selectedCountries="selectedLocIds"
-        :inactiveCountries="inactiveCountryIds"
-        @country="handleCountrySelection"
-      />
-      <div class="overview--locations-by-words">
-        <LocationList
-          :locsToLangs="locsToLangs"
-          :selectedLocs="selectedLocIds"
-          @click="handleCountrySelection"
-        />
-      </div>
-      <LabeledCheckbox
-        class="overview--select-the-world"
-        labelText="The whole world"
-        :value="allCountriesAreSelected"
-        @input="handleSelectWholeWorld"
-      />
-    </form>
   </section>
 </template>
 
 <script>
-import LocationList from '../molecules/LocationList'
-import InteractiveWorldMap from '../molecules/InteractiveWorldMap'
 import SpokenLanguageResults from '../organisms/SpokenLanguageResults'
-import LabeledCheckbox from '../molecules/LabeledCheckbox'
 import { mapState } from 'vuex'
 
 export default {
   name: 'Overview',
 
   components: {
-    LocationList,
     SpokenLanguageResults,
-    InteractiveWorldMap,
-    LabeledCheckbox,
   },
 
   data () {
@@ -206,65 +177,9 @@ export default {
 <style lang="scss">
 @import '../../definitions';
 [data-view="overview"] {
-  display: grid;
-  grid-template-columns: minmax(12rem, 25%) 75%;
-  grid-template-rows: 3em calc(70% - 3em);
-  grid-template-areas:  "header header"
-                        "left right";
-  grid-gap: $base-spacing;
-  height: calc(100vh - #{$base-spacing * 2});
-  max-height: calc(100vh - #{$base-spacing * 2});
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-
   > * {
     max-height: 100%;
     overflow: auto;
-  }
-
-  header {
-    grid-area: header;
-  }
-
-  [data-component="SpokenLanguageResults"] {
-    grid-area: left;
-    max-height: 100%;
-  }
-
-  form {
-    grid-area: right;
-    display: grid;
-    grid-template-rows: 3fr 3rem 2fr;
-    grid-template-columns: repeat(2, 1fr);
-    // grid-template-areas:  "top"
-    //                       "middle"
-    //                       "bottom";
-    grid-gap: $base-spacing / 2;
-    height: calc(100vh - #{$base-spacing * 3});
-    max-height: calc(100vh - #{$base-spacing * 3});
-
-    > * {
-      max-height: 100%;
-      overflow: auto;
-    }
-
-    [data-component="InteractiveWorldMap"] {
-      grid-column: 1 / 3;
-      grid-row: 1;
-      max-height: fit-content;
-      max-width: fit-content;
-    }
-
-    .overview--locations-by-words {
-      grid-column: 1 / 3;
-      grid-row: 3 / 4;
-    }
-
-    .overview--select-the-world {
-      grid-column: 1;
-      grid-row: 2 / 3;
-    }
   }
 
 }

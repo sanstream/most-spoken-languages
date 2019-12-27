@@ -997,7 +997,7 @@
     "BQ": {
         "countryName": "Bonaire, Sint Eustatius and Saba",
         "languages": {},
-        "populationCount": null
+        "populationCount": 19805
     },
     "BA": {
         "countryName": "Bosnia and Herzegovina",
@@ -1047,7 +1047,7 @@
     "BV": {
         "countryName": "Bouvet Island",
         "languages": {},
-        "populationCount": null
+        "populationCount": 0
     },
     "BR": {
         "countryName": "Brazil",
@@ -1500,12 +1500,12 @@
                 }
             }
         },
-        "populationCount": null
+        "populationCount": 0
     },
     "CC": {
         "countryName": "Cocos (Keeling) Islands",
         "languages": {},
-        "populationCount": null
+        "populationCount": 596
     },
     "CO": {
         "countryName": "Colombia",
@@ -1543,17 +1543,17 @@
         "countryName": "Congo (Democratic Republic of the)",
         "languages": {
             "fr": {
-                "CIA": {
-                    "percentage": null
+                "wikipedia": {
+                    "percentage": 60
                 }
             },
             "ln": {
-                "CIA": {
+                "wikipedia": {
                     "percentage": null
                 }
             }
         },
-        "populationCount": null
+        "populationCount": 81340000
     },
     "CK": {
         "countryName": "Cook Islands",
@@ -2098,7 +2098,7 @@
     "SZ": {
         "countryName": "Eswatini",
         "languages": {},
-        "populationCount": null
+        "populationCount": 0
     },
     "ET": {
         "countryName": "Ethiopia",
@@ -2249,7 +2249,7 @@
                 }
             }
         },
-        "populationCount": null
+        "populationCount": 49290
     },
     "FJ": {
         "countryName": "Fiji",
@@ -3271,14 +3271,41 @@
         "populationCount": 112000
     },
     "KP": {
-        "countryName": "Korea (Democratic People's Republic of)",
-        "languages": {},
-        "populationCount": null
+        "countryName": "North Korea (Democratic People's Republic of Korea)",
+        "languages": {
+            "ko": {
+                "wikipedia": {
+                    "percentage": 100
+                }
+            }
+        },
+        "populationCount": 25490000
     },
     "KR": {
-        "countryName": "Korea (Republic of)",
-        "languages": {},
-        "populationCount": null
+        "countryName": "South Korea (Republic of Korea)",
+        "languages": {
+            "ko": {
+                "wikipedia": {
+                    "percentage": 100
+                }
+            },
+            "en": {
+                "wikipedia": {
+                    "percentage": null
+                }
+            },
+            "jp": {
+                "wikipedia": {
+                    "percentage": null
+                }
+            },
+            "zh": {
+                "wikipedia": {
+                    "percentage": null
+                }
+            }
+        },
+        "populationCount": 51470000
     },
     "KW": {
         "countryName": "Kuwait",
@@ -4972,8 +4999,14 @@
     },
     "PS": {
         "countryName": "Palestine, State of",
-        "languages": {},
-        "populationCount": null
+        "languages": {
+            "ar": {
+                "wikipedia": {
+                    "percentage": 100
+                }
+            }
+        },
+        "populationCount": 3800000
     },
     "PA": {
         "countryName": "Panama",
@@ -6436,7 +6469,13 @@
     },
     "TZ": {
         "countryName": "Tanzania, United Republic of",
-        "languages": {},
+        "languages": {
+            "sw": {
+                "wikipedia": {
+                    "percentage": 90
+                }
+            }
+        },
         "populationCount": null
     },
     "TH": {
@@ -6825,7 +6864,7 @@
                 }
             }
         },
-        "populationCount": null
+        "populationCount": 67545757
     },
     "US": {
         "countryName": "United States of America",

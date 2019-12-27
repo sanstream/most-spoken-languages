@@ -760,7 +760,6 @@ export default {
 
 div [data-component="WorldMap"] {
   svg {
-    min-width: 1500px;
     path {
       stroke-width: 2px;
       stroke: $interactive-element-background;

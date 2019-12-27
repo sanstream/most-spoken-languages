@@ -2,7 +2,7 @@
   <div data-component="InteractiveWorldMap">
     <Label
       :linkedToId="'map'"
-      text="Pick a country from the map"
+      text="Pick a country"
     />
     <WorldMap
       @country="$emit('country', $event)"

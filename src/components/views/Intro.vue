@@ -1,10 +1,6 @@
 <template>
   <section data-component="intro">
-    <header>
-      <h1>The most spoken languages arround the world</h1>
-    </header>
-
-    <p>
+    <!-- <p>
       When we are raised by our family we naturally learn the language they speak.
       This helps us to communicate. Share ideas and learn from them.
       Most of the time just this is just one, but it can be two.
@@ -18,7 +14,7 @@
       a shared language.
     </p>
 
-    <p>But which are those languages and how do you decide which language is worth learning?</p>
+    <p>But which are those languages and how do you decide which language is worth learning?</p> -->
 
     <p>
       In order to get an insight into this I scowered the internet for articles about this subject,
@@ -41,8 +37,9 @@
     </p>
 
     <router-link
+      class="intro--load-overview"
       to="/overview?countries=all">
-      Load the overview
+      Load the overview<br>&#8964;
     </router-link>
   </section>
 </template>
@@ -57,7 +54,20 @@ export default {
 @import '../../definitions';
 
 [data-component="intro"] {
-  max-width: $maxWidthText;
-  margin: 0 auto;
+  padding-bottom: 4rem;
+  position: relative;
+  overflow: auto;
+
+  .intro--load-overview {
+    display: inline-block;
+    color: $colour-red;
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
 }
 </style>

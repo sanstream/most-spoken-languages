@@ -1,9 +1,22 @@
 <template>
   <section data-view="overview">
-    <header>
-      <h1>The most spoken languages arround the world</h1>
-    </header>
-    <section v-if="noCountriesSelected">
+    <form>
+      <InteractiveWorldMap
+        :selectedCountries="selectedLocIds"
+        :inactiveCountries="inactiveCountryIds"
+        @country="handleCountrySelection"
+      />
+      <LabeledCheckbox
+        class="overview--select-the-world"
+        labelText="The whole world"
+        :value="allCountriesAreSelected"
+        @input="handleSelectWholeWorld"
+      />
+    </form>
+    <section
+      v-if="noCountriesSelected"
+      class="overview--no-data"
+    >
       <h2>Nothing has been selected.</h2>
 
       <p>Please select a country via the map or search for it in the list.</p>
@@ -17,31 +30,10 @@
       :displayedLanguages="displayedLanguages"
       :speakersPerTopLanguages="speakersPerTopLanguages"
     />
-    <form>
-      <InteractiveWorldMap
-        :selectedCountries="selectedLocIds"
-        :inactiveCountries="inactiveCountryIds"
-        @country="handleCountrySelection"
-      />
-      <div class="overview--locations-by-words">
-        <LocationList
-          :locsToLangs="locsToLangs"
-          :selectedLocs="selectedLocIds"
-          @click="handleCountrySelection"
-        />
-      </div>
-      <LabeledCheckbox
-        class="overview--select-the-world"
-        labelText="The whole world"
-        :value="allCountriesAreSelected"
-        @input="handleSelectWholeWorld"
-      />
-    </form>
   </section>
 </template>
 
 <script>
-import LocationList from '../molecules/LocationList'
 import InteractiveWorldMap from '../molecules/InteractiveWorldMap'
 import SpokenLanguageResults from '../organisms/SpokenLanguageResults'
 import LabeledCheckbox from '../molecules/LabeledCheckbox'
@@ -51,7 +43,6 @@ export default {
   name: 'Overview',
 
   components: {
-    LocationList,
     SpokenLanguageResults,
     InteractiveWorldMap,
     LabeledCheckbox,
@@ -206,66 +197,25 @@ export default {
 <style lang="scss">
 @import '../../definitions';
 [data-view="overview"] {
-  display: grid;
-  grid-template-columns: minmax(12rem, 25%) 75%;
-  grid-template-rows: 3em calc(70% - 3em);
-  grid-template-areas:  "header header"
-                        "left right";
-  grid-gap: $base-spacing;
-  height: calc(100vh - #{$base-spacing * 2});
-  max-height: calc(100vh - #{$base-spacing * 2});
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-
   > * {
     max-height: 100%;
     overflow: auto;
   }
+}
 
-  header {
-    grid-area: header;
-  }
-
-  [data-component="SpokenLanguageResults"] {
-    grid-area: left;
-    max-height: 100%;
-  }
-
-  form {
-    grid-area: right;
-    display: grid;
-    grid-template-rows: 3fr 3rem 2fr;
-    grid-template-columns: repeat(2, 1fr);
-    // grid-template-areas:  "top"
-    //                       "middle"
-    //                       "bottom";
-    grid-gap: $base-spacing / 2;
-    height: calc(100vh - #{$base-spacing * 3});
-    max-height: calc(100vh - #{$base-spacing * 3});
-
-    > * {
-      max-height: 100%;
-      overflow: auto;
+@media screen and (min-width: $medium-screen) {
+  [data-view="overview"] {
+    display: flex;
+    flex-direction: row;
+    > form {
+      flex: 1 0;
     }
 
-    [data-component="InteractiveWorldMap"] {
-      grid-column: 1 / 3;
-      grid-row: 1;
-      max-height: fit-content;
-      max-width: fit-content;
-    }
-
-    .overview--locations-by-words {
-      grid-column: 1 / 3;
-      grid-row: 3 / 4;
-    }
-
-    .overview--select-the-world {
-      grid-column: 1;
-      grid-row: 2 / 3;
+    > .overview--no-data,
+    > [data-component="SpokenLanguageResults"] {
+      flex: 0 0 20rem;
+      padding-left: 2rem;
     }
   }
-
 }
 </style>

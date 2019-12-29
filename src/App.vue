@@ -40,7 +40,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $text-colour;
-  font-size: 100%;
+  font-size: 80%;
   line-height: 1.4em;
   background-color: $background-colour;
   padding: 0 0 3rem 0;
@@ -58,6 +58,10 @@ export default {
   flex-direction: column;
   overflow: hidden;
 
+  @media screen and (min-width: $medium-screen){
+    font-size: 100%;
+  }
+
   header {
     flex: 0 0;
     background-color: $background-colour;
@@ -71,7 +75,7 @@ export default {
       max-width: 1400px;
       width: auto;
       margin: 2rem auto;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
 
       small,
       small a {
@@ -81,7 +85,7 @@ export default {
       }
     }
 
-    @media screen and (max-width: 400px){
+    @media screen and (min-width: $medium-screen){
       h1 {
         font-size: 2rem;
       }

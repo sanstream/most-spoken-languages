@@ -98,10 +98,10 @@ export default {
       margin: 0 1em 1em 0;
     }
 
-    @media screen and (max-width: 400px){
+    @media screen and (max-width: $small-screen){
       li {
-        flex: 1 0 100%;
-        margin: 0 0 1em 0;
+        flex: 1 0 calc(50% - 1em);
+        margin: 0 1em 1em 0;
       }
     }
 

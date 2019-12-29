@@ -1,5 +1,7 @@
 <template>
-  <section data-view="overview">
+  <section
+    data-view="overview"
+  >
     <form>
       <InteractiveWorldMap
         class="overview--map"
@@ -7,12 +9,35 @@
         :inactiveCountries="inactiveCountryIds"
         @country="handleCountrySelection"
       />
-      <LabeledCheckbox
-        class="overview--select-the-world"
-        labelText="The whole world"
-        :value="allCountriesAreSelected"
-        @input="handleSelectWholeWorld"
-      />
+      <section
+        class="overview-manual-selection"
+      >
+        <div class="Popper"
+             ref="popout"
+             role="dialog"
+             v-show="showPopup"
+        >
+          <LocationList
+            :locsToLangs="locsToLangs"
+            :selectedLocs="selectedLocIds"
+            @click="handleCountrySelection"
+          />
+        </div>
+
+        <Button
+          ref="findButton"
+          @click="showPopup = !showPopup"
+        >
+          Find a country
+        </Button>
+        &ensp;or&ensp;
+        <LabeledCheckbox
+          class="overview--select-the-world"
+          labelText="select the whole world"
+          :value="allCountriesAreSelected"
+          @input="handleSelectWholeWorld"
+        />
+      </section>
     </form>
     <section
       v-if="noCountriesSelected"
@@ -38,6 +63,9 @@
 import InteractiveWorldMap from '../molecules/InteractiveWorldMap'
 import SpokenLanguageResults from '../organisms/SpokenLanguageResults'
 import LabeledCheckbox from '../molecules/LabeledCheckbox'
+import LocationList from '../molecules/LocationList'
+import Popper from 'popper.js'
+import Button from '../atoms/Button'
 import { mapState } from 'vuex'
 
 export default {
@@ -47,11 +75,15 @@ export default {
     SpokenLanguageResults,
     InteractiveWorldMap,
     LabeledCheckbox,
+    Button,
+    LocationList,
   },
 
   data () {
     return {
       theWholeWorld: false,
+      showPopup: false,
+      popperRef: null,
     }
   },
 
@@ -63,6 +95,11 @@ export default {
 
   mounted () {
     this.handleRouteChanges(this.$route)
+    this.$nextTick(() => {
+      this.popperRef = new Popper(this.$refs.findButton, this.$refs.popout, {
+        placement: 'top-start',
+      })
+    })
   },
 
   computed: {
@@ -202,6 +239,25 @@ export default {
 
   .overview--map {
     max-width: $medium-screen;
+  }
+
+  .overview-manual-selection {
+    margin: 1rem 0;
+    > * {
+      display: inline-block;
+    }
+
+    .Popper {
+      padding: 2rem;
+      z-index: 20;
+      // width: $medium-screen;
+      // max-width: 90vw;
+      height: 400px;
+      max-height: 50vh;
+      overflow: auto;
+      box-shadow: 1px 1px 5px $non-interactive-element-background;
+      background-color: $background-colour;
+    }
   }
 }
 

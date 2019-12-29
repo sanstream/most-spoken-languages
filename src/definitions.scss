@@ -67,6 +67,17 @@ $inactive-colour: #777777;
   border-top: 1px solid $interactive-element-foreground;
 }
 
+@mixin activeElement () {
+  cursor: pointer;
+  border: 0 none;
+  font-weight: 600;
+  display: inline-block;
+  background-color: $interactive-element-background;
+  border-bottom: 1px solid $interactive-element-foreground;
+  padding: 0 0.5rem;
+  line-height: 2rem;
+  font-family: 'Consolas', Courier, monospace;
+}
 
 @mixin highLevelLabel () {
   font-weight: bold;

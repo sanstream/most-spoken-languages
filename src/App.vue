@@ -58,8 +58,16 @@ export default {
   flex-direction: column;
   overflow: hidden;
 
+  button {
+    font-size: 80%;
+  }
+
   @media screen and (min-width: $medium-screen){
     font-size: 100%;
+
+    button {
+      font-size: 100%;
+    }
   }
 
   header {

@@ -1,25 +1,21 @@
 <template>
-  <div data-component="LabeledCheckbox">
+  <label
+    data-component="LabeledCheckbox"
+    :data-checked="value"
+  >
     <input
       type="checkbox"
       :checked="value"
       @change="$emit('input', $event.target.checked)"
       id="fancy-label"
     />
-    <Label
-      linkedToId="fancy-label"
-      :text="labelText"
-    />
-  </div>
+    {{labelText}}
+  </label>
 </template>
 
 <script>
-import Label from '../atoms/Label.vue'
 export default {
   name: 'LabeledCheckbox',
-  components: {
-    Label,
-  },
   props: {
     value: {
       type: Boolean,
@@ -35,14 +31,13 @@ export default {
 </script>
 
 <style lang="scss">
-[data-component="LabeledCheckbox"] {
-  cursor: pointer;
-  > * {
-    cursor: inherit;
-  }
+@import '../../definitions';
 
-  label {
-    padding-left: 1em;
+[data-component="LabeledCheckbox"] {
+  @include activeElement;
+
+  &[data-checked="true"] {
+    border-bottom-color: $interactive-element-active-part;
   }
 }
 </style>

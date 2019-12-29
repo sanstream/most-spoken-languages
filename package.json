@@ -10,9 +10,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "core-js": "^2.6.5",
     "d3-scale": "^2.2.2",
     "numeral": "^2.0.6",
-    "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
@@ -47,14 +47,17 @@
       "vue/require-prop-types": "error",
       "vue/no-confusing-v-for-v-if": "error",
       "vue/this-in-template": "error",
-      "comma-dangle": ["error", {
-        "arrays": "always",
-        "objects": "always",
-        "imports": "never",
-        "exports": "never",
-        "functions": "never"
-    }],
-    "vue/match-component-file-name": "error"
+      "comma-dangle": [
+        "error",
+        {
+          "arrays": "always",
+          "objects": "always",
+          "imports": "never",
+          "exports": "never",
+          "functions": "never"
+        }
+      ],
+      "vue/match-component-file-name": "error"
     }
   },
   "postcss": {

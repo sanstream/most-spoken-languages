@@ -7,10 +7,16 @@
       ></div>
     </div>
     <strong
+      v-if="numOfSpeakers > 0"
       class="number-of-speakers"
     >
       {{numOfSpeakers | formatPopulation}}
     </strong>
+    <template
+      v-else
+    >
+      <strong>some might</strong>
+    </template>
     speak <br>{{language.name}}
   </div>
 </template>

@@ -92,23 +92,19 @@ export default {
     padding: 0;
     list-style: none;
     flex-wrap: wrap;
+    overflow: auto;
 
     li {
       flex: 1 0 calc(33% - 1em);
       margin: 0 1em 1em 0;
     }
 
-    @media screen and (max-width: $small-screen){
+    @media screen
+      and (max-width: $small-screen)
+      and (max-width: $medium-screen){
       li {
         flex: 1 0 calc(50% - 1em);
         margin: 0 1em 1em 0;
-      }
-    }
-
-    @media screen and (min-width: $medium-screen) {
-      li {
-        flex: 1 0 100%;
-        margin: 0 0 1em 0;
       }
     }
   }

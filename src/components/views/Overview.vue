@@ -2,6 +2,7 @@
   <section data-view="overview">
     <form>
       <InteractiveWorldMap
+        class="overview--map"
         :selectedCountries="selectedLocIds"
         :inactiveCountries="inactiveCountryIds"
         @country="handleCountrySelection"
@@ -197,9 +198,10 @@ export default {
 <style lang="scss">
 @import '../../definitions';
 [data-view="overview"] {
-  > * {
-    max-height: 100%;
-    overflow: auto;
+  overflow: auto;
+
+  .overview--map {
+    max-width: $medium-screen;
   }
 }
 
@@ -208,12 +210,12 @@ export default {
     display: flex;
     flex-direction: row;
     > form {
-      flex: 1 0;
+      flex: 2 1;
     }
 
     > .overview--no-data,
     > [data-component="SpokenLanguageResults"] {
-      flex: 0 0 20rem;
+      flex: 1 0;
       padding-left: 2rem;
     }
   }

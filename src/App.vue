@@ -2,7 +2,12 @@
   <main data-component="most-spoken-languages-app">
     <header>
       <div>
-        <h1>The most spoken languages arround the world
+        <h1>
+          <router-link
+            to="/"
+          >
+            The most spoken languages arround the world
+          </router-link>
           <br>
           <small>
             by
@@ -84,6 +89,16 @@ export default {
       width: auto;
       margin: 2rem auto;
       font-size: 1.1rem;
+
+      > a {
+        color: inherit;
+        text-decoration: none;
+        &:hover,
+        &:visited {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
 
       small,
       small a {

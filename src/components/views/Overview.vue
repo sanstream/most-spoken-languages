@@ -12,17 +12,26 @@
       <section
         class="overview-manual-selection"
       >
-        <div class="Popper"
-             ref="popout"
-             role="dialog"
-             v-show="showPopup"
+        <VueModal
+          v-model="showPopup"
+          :backdrop="true"
+          @hide="showPopup = false"
         >
           <LocationList
+            class="overview--manual-location-list"
             :locsToLangs="locsToLangs"
             :selectedLocs="selectedLocIds"
             @click="handleCountrySelection"
           />
-        </div>
+
+          <ContextualNote>
+            <strong>Your selection is applied automatically.</strong>
+          </ContextualNote>
+
+          <Button
+            @click="showPopup = false"
+          >Close</Button>
+        </VueModal>
 
         <Button
           ref="findButton"
@@ -64,9 +73,12 @@ import InteractiveWorldMap from '../molecules/InteractiveWorldMap'
 import SpokenLanguageResults from '../organisms/SpokenLanguageResults'
 import LabeledCheckbox from '../molecules/LabeledCheckbox'
 import LocationList from '../molecules/LocationList'
-import Popper from 'popper.js'
 import Button from '../atoms/Button'
+import ContextualNote from '../atoms/ContextualNote'
 import { mapState } from 'vuex'
+import { component as VueModal } from '@xunlei/vue-modal'
+// import css
+import '@xunlei/vue-modal/src/vue-modal.css'
 
 export default {
   name: 'Overview',
@@ -77,13 +89,14 @@ export default {
     LabeledCheckbox,
     Button,
     LocationList,
+    VueModal,
+    ContextualNote,
   },
 
   data () {
     return {
       theWholeWorld: false,
       showPopup: false,
-      popperRef: null,
     }
   },
 
@@ -95,11 +108,6 @@ export default {
 
   mounted () {
     this.handleRouteChanges(this.$route)
-    this.$nextTick(() => {
-      this.popperRef = new Popper(this.$refs.findButton, this.$refs.popout, {
-        placement: 'top-start',
-      })
-    })
   },
 
   computed: {
@@ -247,16 +255,30 @@ export default {
       display: inline-block;
     }
 
-    .Popper {
-      padding: 2rem;
-      z-index: 20;
-      // width: $medium-screen;
-      // max-width: 90vw;
-      height: 400px;
-      max-height: 50vh;
-      overflow: auto;
-      box-shadow: 1px 1px 5px $non-interactive-element-background;
-      background-color: $background-colour;
+    .modal-mask {
+      display: flex;
+      .modal-content {
+        padding: 2rem;
+        z-index: 20;
+        // width: $medium-screen;
+        // max-width: 90vw;
+        max-height: 90vh;
+        overflow: hidden;
+        box-shadow: 1px 1px 5px $non-interactive-element-background;
+        background-color: $background-colour;
+        display: flex;
+        flex-direction: column;
+
+        > * {
+          flex: 0 0;
+          margin: 1rem 0;
+        }
+        > .overview--manual-location-list {
+          flex: 1 1;
+          max-height: 400px;
+        }
+
+      }
     }
   }
 }
